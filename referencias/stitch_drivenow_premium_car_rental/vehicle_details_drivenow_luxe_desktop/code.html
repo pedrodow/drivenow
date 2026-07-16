@@ -1,0 +1,371 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>DRIVENOW | Vehicle Details</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            "colors": {
+                    "primary": "#fff6df",
+                    "surface-container-low": "#1b1b1d",
+                    "primary-container": "#ffd700",
+                    "inverse-surface": "#e5e1e4",
+                    "surface-dim": "#131315",
+                    "on-secondary-fixed-variant": "#47464b",
+                    "outline-variant": "#4d4732",
+                    "on-error-container": "#ffdad6",
+                    "background": "#131315",
+                    "on-surface": "#e5e1e4",
+                    "tertiary-fixed-dim": "#c8c5cb",
+                    "tertiary-container": "#dbd9de",
+                    "on-surface-variant": "#d0c6ab",
+                    "on-primary-container": "#705e00",
+                    "on-tertiary-fixed-variant": "#47464b",
+                    "on-secondary-fixed": "#1b1b1f",
+                    "tertiary-fixed": "#e4e1e7",
+                    "secondary-fixed-dim": "#c8c5cb",
+                    "secondary-fixed": "#e4e1e7",
+                    "inverse-primary": "#705d00",
+                    "secondary": "#c8c5cb",
+                    "on-tertiary-fixed": "#1b1b1f",
+                    "surface-variant": "#353437",
+                    "on-background": "#e5e1e4",
+                    "inverse-on-surface": "#303032",
+                    "on-tertiary-container": "#5f5e63",
+                    "surface": "#131315",
+                    "on-secondary": "#303034",
+                    "error-container": "#93000a",
+                    "tertiary": "#f8f5fb",
+                    "surface-bright": "#39393b",
+                    "secondary-container": "#47464b",
+                    "surface-container-highest": "#353437",
+                    "primary-fixed-dim": "#e9c400",
+                    "surface-container": "#201f21",
+                    "on-primary-fixed": "#221b00",
+                    "outline": "#999077",
+                    "on-primary-fixed-variant": "#544600",
+                    "error": "#ffb4ab",
+                    "surface-container-high": "#2a2a2c",
+                    "on-error": "#690005",
+                    "surface-tint": "#e9c400",
+                    "on-tertiary": "#303034",
+                    "on-secondary-container": "#b6b4b9",
+                    "surface-container-lowest": "#0e0e10",
+                    "on-primary": "#3a3000",
+                    "primary-fixed": "#ffe16d"
+            },
+            "borderRadius": {
+                    "DEFAULT": "1rem",
+                    "lg": "2rem",
+                    "xl": "3rem",
+                    "full": "9999px"
+            },
+            "spacing": {
+                    "stack-md": "16px",
+                    "gutter": "24px",
+                    "container-max": "1280px",
+                    "margin-mobile": "20px",
+                    "margin-desktop": "64px",
+                    "stack-xl": "64px",
+                    "stack-sm": "8px",
+                    "stack-lg": "32px"
+            },
+            "fontFamily": {
+                    "label-sm": ["Plus Jakarta Sans"],
+                    "headline-lg": ["Plus Jakarta Sans"],
+                    "headline-xl": ["Plus Jakarta Sans"],
+                    "body-lg": ["Plus Jakarta Sans"],
+                    "display-lg-mobile": ["Plus Jakarta Sans"],
+                    "display-lg": ["Plus Jakarta Sans"],
+                    "body-md": ["Plus Jakarta Sans"],
+                    "label-md": ["Plus Jakarta Sans"]
+            },
+            "fontSize": {
+                    "label-sm": ["12px", {"lineHeight": "1", "letterSpacing": "0.05em", "fontWeight": "600"}],
+                    "headline-lg": ["28px", {"lineHeight": "1.3", "letterSpacing": "-0.01em", "fontWeight": "600"}],
+                    "headline-xl": ["36px", {"lineHeight": "1.2", "letterSpacing": "-0.02em", "fontWeight": "600"}],
+                    "body-lg": ["18px", {"lineHeight": "1.6", "letterSpacing": "0em", "fontWeight": "400"}],
+                    "display-lg-mobile": ["40px", {"lineHeight": "1.2", "letterSpacing": "-0.02em", "fontWeight": "700"}],
+                    "display-lg": ["64px", {"lineHeight": "1.1", "letterSpacing": "-0.04em", "fontWeight": "700"}],
+                    "body-md": ["16px", {"lineHeight": "1.6", "letterSpacing": "0em", "fontWeight": "400"}],
+                    "label-md": ["14px", {"lineHeight": "1", "letterSpacing": "0.02em", "fontWeight": "500"}]
+            }
+          },
+        },
+      }
+    </script>
+<style>
+        .glass-card {
+            background: rgba(255, 255, 255, 0.03);
+            backdrop-filter: blur(16px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+        .golden-glow {
+            box-shadow: 0 0 20px rgba(233, 196, 0, 0.15);
+        }
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        .active-glow {
+            filter: drop-shadow(0 0 8px rgba(233, 196, 0, 0.4));
+        }
+        ::-webkit-scrollbar { width: 6px; }
+        ::-webkit-scrollbar-track { background: #131315; }
+        ::-webkit-scrollbar-thumb { background: #353437; border-radius: 10px; }
+    </style>
+</head>
+<body class="bg-background text-on-background font-body-md selection:bg-primary-fixed-dim selection:text-on-primary-fixed">
+<!-- Top Navigation -->
+<header class="fixed top-0 w-full z-50 bg-background/80 backdrop-blur-lg border-b border-white/10">
+<div class="flex justify-between items-center px-margin-mobile md:px-margin-desktop h-20 w-full max-w-container-max mx-auto">
+<div class="flex items-center gap-4">
+<span class="material-symbols-outlined text-primary cursor-pointer">menu</span>
+<span class="font-display-lg text-display-lg-mobile md:text-display-lg tracking-tighter text-primary-fixed-dim">DRIVENOW</span>
+</div>
+<nav class="hidden md:flex gap-8 items-center">
+<a class="font-label-md text-label-md text-primary hover:opacity-80 transition-opacity" href="#">Home</a>
+<a class="font-label-md text-label-md text-primary-fixed-dim active-glow" href="#">Fleet</a>
+<a class="font-label-md text-label-md text-on-surface-variant hover:opacity-80 transition-opacity" href="#">Reservations</a>
+<a class="font-label-md text-label-md text-on-surface-variant hover:opacity-80 transition-opacity" href="#">Contact</a>
+</nav>
+<div class="w-10 h-10 rounded-full overflow-hidden border border-primary/20">
+<img class="w-full h-full object-cover" data-alt="A close-up portrait of a sophisticated executive male in his 40s, looking away from the camera with a calm expression. The lighting is moody and dramatic, typical of a high-end luxury brand aesthetic. He is wearing a tailored charcoal suit against a softly blurred dark interior background that complements the graphite and gold color palette of the UI." src="https://lh3.googleusercontent.com/aida-public/AB6AXuCDoB4wzJS7-IeBkevQQ5zfjI4L84qLuOsAuWRFQ_Ff9ArIDclGN08TFlG-WvJ5wSEdcdNK2Oz5W6Q9o2YS0S90xUzOpY7igLRRKYgJw19Tgc4LSA96eidfwe64yXgqss5k_LyJb2QLLbqvk58O1XrT00L5u0jWrg9LzIDBFhqHHuzmtW8owy_O8VUfBMo9pxL2tUezP1O6VLVyjHi2PXtBPy3XJ6sg5IRcHUtK4C2-UEKwvTLfDH3uZA"/>
+</div>
+</div>
+</header>
+<main class="pt-24 pb-stack-xl max-w-container-max mx-auto px-margin-mobile md:px-margin-desktop">
+<!-- Hero Gallery Section -->
+<section class="mb-stack-lg">
+<div class="grid grid-cols-1 md:grid-cols-4 gap-4 h-[400px] md:h-[600px]">
+<div class="md:col-span-3 glass-card rounded-lg overflow-hidden group">
+<img class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105" data-alt="A cinematic side profile of a sleek, black high-performance luxury sedan parked in a minimalist, dimly lit studio with a polished graphite floor. The car's metallic paint reflects subtle highlights from a single soft overhead light source, emphasizing its aerodynamic curves and sharp character lines. Red brake calipers peek through the intricate dark alloy wheels, adding a splash of intensity. The overall mood is one of prestige, power, and engineering perfection." src="https://lh3.googleusercontent.com/aida-public/AB6AXuDs2vHNKZQ-e7e04Fzd8J8dxhVUhdg-d1CGzOO0iHkTQumFnyJTkRRAZYzavPX3-Sl6UuOgHxKx9Q_Aqxsg8UYl2RlxE1imAHJoTjhtBwz9pwLFmErqGpzrBLi8H9x51i6_lfbH_DG3Cua6kMiYx-Y00RiDsQScW9dnfgD2wR-Lw5pD9QlghN2P8uYpFQa1YgaYvwoD6NRgyNIjy3ymaSK5qD-sprh3o7Qg0fTDt-nQD8ke1Yx6pNcwOw"/>
+</div>
+<div class="hidden md:flex flex-col gap-4">
+<div class="h-1/2 glass-card rounded-lg overflow-hidden group">
+<img class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105" data-alt="A detailed interior shot of a luxury vehicle's cockpit, showcasing premium black leather stitching and carbon fiber accents. The dashboard features a large glowing digital display with golden interface elements. Soft ambient lighting in a warm yellow hue traces the contours of the center console. The atmosphere is high-tech yet incredibly sophisticated and comfortable." src="https://lh3.googleusercontent.com/aida-public/AB6AXuCMXwu3B1BNQW_IiphUEfP6C7i6aOHM25EUliHM6KloXHMEhQaghbXxrZUYj6qTuJpE31U4ex_bodw7fc6rMv7An4ogEHc3eOQ6rof8zOORaLcCKjJz6o_qSfx-3_FS2aV2HIxM24EAJ_qa8MGc4DiGwt-bUcFElW3_ZYF9lY5dGRuZ-eu57C8WzQPpSkxsl17fAASKzjN--KIqNcZpEIJu0iCvcfzMM-jObz-kZN0iIa_Y8Hv6KQD7eQ"/>
+</div>
+<div class="h-1/2 glass-card rounded-lg overflow-hidden relative group">
+<img class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105" data-alt="A focused close-up of the rear headlight of a high-end luxury car at night. The LED signature glow is a sharp, vibrant red, contrasting against the deep graphite body of the vehicle. Raindrops glisten on the surface, catching the light and adding texture. The style is hyper-realistic and dramatic, emphasizing the car's modern design details." src="https://lh3.googleusercontent.com/aida-public/AB6AXuCZm_nzvz6NYP4SDQA71QP-ZwG_V1AIxN1CZwj5j8rSc-uHBSERF-ouhZK7rERnCaCMwSFDdxkZ2phrLqcP65amlcdCcrx1fImJ_CFFOVXr0wMkhPM4olfcQQ9AyYjf01_uf7GfYzfYrdQ10T3FZJlP7t_GgGhTAGQOg6_b2BwWIFegLFGZVi9pNQDmiuZMbX2dWhaMEXLT4mgoyvQlo4vTjVSgnz010RlGyvYnxcxDBykyhgYh6UyRAg"/>
+<button class="absolute inset-0 bg-black/40 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity">
+<span class="text-white font-label-md">+ 12 Photos</span>
+</button>
+</div>
+</div>
+</div>
+</section>
+<!-- Content Grid -->
+<div class="grid grid-cols-1 lg:grid-cols-12 gap-gutter items-start">
+<!-- Left Column: Specs & Details -->
+<div class="lg:col-span-8 space-y-stack-lg">
+<!-- Title & Basic Info -->
+<div class="space-y-2">
+<div class="flex items-center gap-2 text-primary-fixed-dim uppercase tracking-widest font-label-sm">
+<span>Luxury Performance</span>
+<span class="w-1 h-1 rounded-full bg-primary-fixed-dim"></span>
+<span>Available Now</span>
+</div>
+<h1 class="font-display-lg text-display-lg-mobile md:text-display-lg text-primary tracking-tight">BMW M5 Competition</h1>
+<div class="flex gap-6 mt-4">
+<div class="flex items-center gap-2 text-on-surface-variant">
+<span class="material-symbols-outlined text-primary-fixed-dim">speed</span>
+<span class="font-label-md">625 HP</span>
+</div>
+<div class="flex items-center gap-2 text-on-surface-variant">
+<span class="material-symbols-outlined text-primary-fixed-dim">settings_input_component</span>
+<span class="font-label-md">Automatic</span>
+</div>
+<div class="flex items-center gap-2 text-on-surface-variant">
+<span class="material-symbols-outlined text-primary-fixed-dim">person</span>
+<span class="font-label-md">5 Seats</span>
+</div>
+</div>
+</div>
+<!-- Description -->
+<div class="space-y-4">
+<h2 class="font-headline-lg text-headline-lg text-primary">The Executive Athlete</h2>
+<p class="text-on-surface-variant leading-relaxed font-body-lg">
+                        The BMW M5 Competition represents the peak of high-performance engineering. This isn't just a sedan; it's a statement of power and prestige. Equipped with a 4.4-liter V8 engine with M TwinPower Turbo technology, it delivers a driving experience that is as exhilarating as it is refined. Perfect for business trips that require an edge or weekend getaways where the journey matters as much as the destination.
+                    </p>
+</div>
+<!-- Specifications Bento -->
+<div class="grid grid-cols-2 md:grid-cols-3 gap-4">
+<div class="glass-card p-6 rounded-lg space-y-2">
+<span class="font-label-sm text-on-surface-variant/60 uppercase">0-100 km/h</span>
+<p class="font-headline-xl text-headline-xl text-primary">3.3 s</p>
+</div>
+<div class="glass-card p-6 rounded-lg space-y-2">
+<span class="font-label-sm text-on-surface-variant/60 uppercase">Top Speed</span>
+<p class="font-headline-xl text-headline-xl text-primary">305 km/h</p>
+</div>
+<div class="glass-card p-6 rounded-lg space-y-2">
+<span class="font-label-sm text-on-surface-variant/60 uppercase">Torque</span>
+<p class="font-headline-xl text-headline-xl text-primary">750 Nm</p>
+</div>
+</div>
+<!-- Rental & Insurance Options -->
+<div class="space-y-stack-md">
+<h3 class="font-headline-lg text-headline-lg text-primary">Protection &amp; Services</h3>
+<div class="space-y-4">
+<div class="glass-card p-stack-md rounded-lg flex items-center justify-between border-primary-fixed-dim/30">
+<div class="flex items-center gap-4">
+<div class="w-12 h-12 rounded-full bg-primary-fixed-dim/10 flex items-center justify-center text-primary-fixed-dim">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">verified_user</span>
+</div>
+<div>
+<h4 class="font-label-md text-primary">Prestige Shield Plus</h4>
+<p class="text-label-sm text-on-surface-variant/70">Full collision damage waiver &amp; roadside assistance</p>
+</div>
+</div>
+<span class="font-label-md text-primary">Included</span>
+</div>
+<div class="glass-card p-stack-md rounded-lg flex items-center justify-between hover:bg-white/5 cursor-pointer transition-colors group">
+<div class="flex items-center gap-4">
+<div class="w-12 h-12 rounded-full bg-white/5 flex items-center justify-center text-on-surface-variant">
+<span class="material-symbols-outlined">concierge</span>
+</div>
+<div>
+<h4 class="font-label-md text-on-surface">Doorstep Delivery</h4>
+<p class="text-label-sm text-on-surface-variant/70">Vehicle delivered and collected from your location</p>
+</div>
+</div>
+<span class="font-label-md text-primary group-hover:text-primary-fixed-dim">+$120.00</span>
+</div>
+</div>
+</div>
+<!-- Reviews -->
+<div class="pt-stack-lg border-t border-white/5">
+<div class="flex justify-between items-end mb-stack-md">
+<h3 class="font-headline-lg text-headline-lg text-primary">Client Experiences</h3>
+<div class="flex items-center gap-2">
+<span class="font-headline-xl text-headline-xl text-primary-fixed-dim">4.9</span>
+<div class="flex text-primary-fixed-dim">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">star</span>
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">star</span>
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">star</span>
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">star</span>
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">star_half</span>
+</div>
+</div>
+</div>
+<div class="space-y-6">
+<div class="glass-card p-6 rounded-lg">
+<div class="flex justify-between mb-4">
+<div class="flex items-center gap-3">
+<div class="w-10 h-10 rounded-full bg-surface-container-highest"></div>
+<div>
+<p class="font-label-md text-primary">Julian V.</p>
+<p class="text-label-sm text-on-surface-variant/60">Elite Member</p>
+</div>
+</div>
+<span class="text-label-sm text-on-surface-variant/60">2 days ago</span>
+</div>
+<p class="text-on-surface-variant italic">"The M5 Competition was immaculate. The delivery process was seamless, and the car performed beyond expectations on the autobahn. DriveNow truly understands prestige service."</p>
+</div>
+</div>
+</div>
+</div>
+<!-- Right Column: Sticky Sidebar -->
+<aside class="lg:col-span-4 lg:sticky lg:top-28">
+<div class="glass-card p-8 rounded-lg golden-glow border-primary-fixed-dim/20 space-y-6">
+<div class="flex justify-between items-end">
+<div>
+<p class="text-label-sm text-on-surface-variant/60 uppercase">Daily Rate</p>
+<h3 class="font-display-lg text-display-lg-mobile text-primary-fixed-dim">$450.00</h3>
+</div>
+<span class="text-label-sm text-on-surface-variant/60">tax incl.</span>
+</div>
+<div class="space-y-4 pt-4 border-t border-white/10">
+<div class="space-y-2">
+<label class="font-label-sm text-on-surface-variant/60 uppercase">Date Selection</label>
+<div class="flex items-center gap-2 p-3 bg-white/5 rounded-lg border border-white/10">
+<span class="material-symbols-outlined text-primary-fixed-dim">calendar_month</span>
+<span class="font-label-md">Oct 24 - Oct 27 (3 Days)</span>
+</div>
+</div>
+<div class="space-y-2">
+<label class="font-label-sm text-on-surface-variant/60 uppercase">Location</label>
+<div class="flex items-center gap-2 p-3 bg-white/5 rounded-lg border border-white/10">
+<span class="material-symbols-outlined text-primary-fixed-dim">location_on</span>
+<span class="font-label-md">Munich Central Depot</span>
+</div>
+</div>
+</div>
+<div class="space-y-3 pt-4">
+<div class="flex justify-between text-on-surface-variant">
+<span class="font-label-md">Rental Subtotal</span>
+<span class="font-label-md">$1,350.00</span>
+</div>
+<div class="flex justify-between text-on-surface-variant">
+<span class="font-label-md">Insurance (Shield Plus)</span>
+<span class="font-label-md">Free</span>
+</div>
+<div class="flex justify-between text-primary font-bold pt-2 border-t border-white/5">
+<span class="font-label-md">Total Amount</span>
+<span class="font-label-md text-primary-fixed-dim">$1,350.00</span>
+</div>
+</div>
+<button class="w-full bg-primary-fixed-dim text-on-primary-fixed font-label-md py-5 rounded-lg uppercase tracking-widest hover:opacity-90 active:scale-95 transition-all golden-glow">
+                        Reserve Now
+                    </button>
+<p class="text-center text-label-sm text-on-surface-variant/60">
+                        No immediate payment required. Secure booking.
+                    </p>
+</div>
+<!-- Assistance Card -->
+<div class="mt-6 glass-card p-6 rounded-lg flex items-center gap-4">
+<div class="w-12 h-12 rounded-full bg-primary-fixed-dim/10 flex items-center justify-center text-primary-fixed-dim">
+<span class="material-symbols-outlined">support_agent</span>
+</div>
+<div>
+<p class="font-label-md text-primary">Need assistance?</p>
+<p class="text-label-sm text-on-surface-variant/70">Our concierge is available 24/7</p>
+</div>
+</div>
+</aside>
+</div>
+</main>
+<!-- Footer -->
+<footer class="bg-surface-container-lowest w-full py-stack-xl">
+<div class="flex flex-col items-center gap-stack-lg px-margin-mobile w-full max-w-container-max mx-auto">
+<span class="font-display-lg text-display-lg text-primary tracking-tighter">DRIVENOW</span>
+<div class="flex flex-wrap justify-center gap-8">
+<a class="font-body-md text-on-surface-variant hover:text-primary-fixed transition-colors" href="#">Privacy</a>
+<a class="font-body-md text-on-surface-variant hover:text-primary-fixed transition-colors" href="#">Terms</a>
+<a class="font-body-md text-on-surface-variant hover:text-primary-fixed transition-colors" href="#">Contact</a>
+<a class="font-body-md text-on-surface-variant hover:text-primary-fixed transition-colors" href="#">Fleet</a>
+</div>
+<div class="w-full h-px bg-white/5"></div>
+<p class="font-label-sm text-on-surface-variant/40 tracking-widest uppercase">
+                © 2024 DRIVENOW PRESTIGE. ALL RIGHTS RESERVED.
+            </p>
+</div>
+</footer>
+<!-- Interactive Layer -->
+<div class="fixed inset-0 pointer-events-none z-0 overflow-hidden">
+<div class="absolute top-[-10%] right-[-10%] w-[50%] h-[50%] bg-primary-fixed-dim/5 blur-[120px] rounded-full"></div>
+<div class="absolute bottom-[-10%] left-[-10%] w-[40%] h-[40%] bg-primary-fixed-dim/3 blur-[100px] rounded-full"></div>
+</div>
+<script>
+        // Smooth scroll and subtle reveal animations
+        document.addEventListener('DOMContentLoaded', () => {
+            const cards = document.querySelectorAll('.glass-card');
+            cards.forEach((card, index) => {
+                card.style.opacity = '0';
+                card.style.transform = 'translateY(20px)';
+                setTimeout(() => {
+                    card.style.transition = 'all 0.6s cubic-bezier(0.4, 0, 0.2, 1)';
+                    card.style.opacity = '1';
+                    card.style.transform = 'translateY(0)';
+                }, index * 100);
+            });
+        });
+    </script>
+</body></html>

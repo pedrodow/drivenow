@@ -1,0 +1,460 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>DRIVENOW | Customer Dashboard</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<style>
+        body {
+            font-family: 'Plus Jakarta Sans', sans-serif;
+            background-color: #131315;
+            color: #e5e1e4;
+            overflow-x: hidden;
+        }
+        .glass {
+            background: rgba(255, 255, 255, 0.03);
+            backdrop-filter: blur(16px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+        .golden-glow {
+            box-shadow: 0 0 20px rgba(233, 196, 0, 0.15);
+        }
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        .active-glow {
+            box-shadow: 0 0 15px rgba(233, 196, 0, 0.1);
+        }
+        ::-webkit-scrollbar {
+            width: 6px;
+        }
+        ::-webkit-scrollbar-track {
+            background: #131315;
+        }
+        ::-webkit-scrollbar-thumb {
+            background: #353437;
+            border-radius: 10px;
+        }
+    </style>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "primary": "#fff6df",
+                        "surface-container-low": "#1b1b1d",
+                        "primary-container": "#ffd700",
+                        "inverse-surface": "#e5e1e4",
+                        "surface-dim": "#131315",
+                        "on-secondary-fixed-variant": "#47464b",
+                        "outline-variant": "#4d4732",
+                        "on-error-container": "#ffdad6",
+                        "background": "#131315",
+                        "on-surface": "#e5e1e4",
+                        "tertiary-fixed-dim": "#c8c5cb",
+                        "tertiary-container": "#dbd9de",
+                        "on-surface-variant": "#d0c6ab",
+                        "on-primary-container": "#705e00",
+                        "on-tertiary-fixed-variant": "#47464b",
+                        "on-secondary-fixed": "#1b1b1f",
+                        "tertiary-fixed": "#e4e1e7",
+                        "secondary-fixed-dim": "#c8c5cb",
+                        "secondary-fixed": "#e4e1e7",
+                        "inverse-primary": "#705d00",
+                        "secondary": "#c8c5cb",
+                        "on-tertiary-fixed": "#1b1b1f",
+                        "surface-variant": "#353437",
+                        "on-background": "#e5e1e4",
+                        "inverse-on-surface": "#303032",
+                        "on-tertiary-container": "#5f5e63",
+                        "surface": "#131315",
+                        "on-secondary": "#303034",
+                        "error-container": "#93000a",
+                        "tertiary": "#f8f5fb",
+                        "surface-bright": "#39393b",
+                        "secondary-container": "#47464b",
+                        "surface-container-highest": "#353437",
+                        "primary-fixed-dim": "#e9c400",
+                        "surface-container": "#201f21",
+                        "on-primary-fixed": "#221b00",
+                        "outline": "#999077",
+                        "on-primary-fixed-variant": "#544600",
+                        "error": "#ffb4ab",
+                        "surface-container-high": "#2a2a2c",
+                        "on-error": "#690005",
+                        "surface-tint": "#e9c400",
+                        "on-tertiary": "#303034",
+                        "on-secondary-container": "#b6b4b9",
+                        "surface-container-lowest": "#0e0e10",
+                        "on-primary": "#3a3000",
+                        "primary-fixed": "#ffe16d"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "1rem",
+                        "lg": "2rem",
+                        "xl": "3rem",
+                        "full": "9999px"
+                    },
+                    "spacing": {
+                        "stack-md": "16px",
+                        "gutter": "24px",
+                        "container-max": "1280px",
+                        "margin-mobile": "20px",
+                        "margin-desktop": "64px",
+                        "stack-xl": "64px",
+                        "stack-sm": "8px",
+                        "stack-lg": "32px"
+                    },
+                    "fontFamily": {
+                        "label-sm": ["Plus Jakarta Sans"],
+                        "headline-lg": ["Plus Jakarta Sans"],
+                        "headline-xl": ["Plus Jakarta Sans"],
+                        "body-lg": ["Plus Jakarta Sans"],
+                        "display-lg-mobile": ["Plus Jakarta Sans"],
+                        "display-lg": ["Plus Jakarta Sans"],
+                        "body-md": ["Plus Jakarta Sans"],
+                        "label-md": ["Plus Jakarta Sans"]
+                    },
+                    "fontSize": {
+                        "label-sm": ["12px", {"lineHeight": "1", "letterSpacing": "0.05em", "fontWeight": "600"}],
+                        "headline-lg": ["28px", {"lineHeight": "1.3", "letterSpacing": "-0.01em", "fontWeight": "600"}],
+                        "headline-xl": ["36px", {"lineHeight": "1.2", "letterSpacing": "-0.02em", "fontWeight": "600"}],
+                        "body-lg": ["18px", {"lineHeight": "1.6", "letterSpacing": "0em", "fontWeight": "400"}],
+                        "display-lg-mobile": ["40px", {"lineHeight": "1.2", "letterSpacing": "-0.02em", "fontWeight": "700"}],
+                        "display-lg": ["64px", {"lineHeight": "1.1", "letterSpacing": "-0.04em", "fontWeight": "700"}],
+                        "body-md": ["16px", {"lineHeight": "1.6", "letterSpacing": "0em", "fontWeight": "400"}],
+                        "label-md": ["14px", {"lineHeight": "1", "letterSpacing": "0.02em", "fontWeight": "500"}]
+                    }
+                },
+            },
+        }
+    </script>
+</head>
+<body class="bg-background text-on-surface antialiased">
+<!-- Main Sidebar Shell -->
+<aside class="fixed left-0 top-0 h-screen w-72 bg-surface-container-lowest border-r border-white/5 z-50 flex flex-col hidden md:flex">
+<div class="px-8 py-10">
+<h1 class="font-display-lg text-display-lg-mobile tracking-tighter text-primary-fixed-dim">DRIVENOW</h1>
+</div>
+<nav class="flex-1 px-4 space-y-2">
+<!-- Home (Active) -->
+<a class="flex items-center gap-4 px-6 py-4 rounded-xl transition-all duration-200 text-primary-fixed-dim bg-white/5 golden-glow" href="#">
+<span class="material-symbols-outlined" data-weight="fill">dashboard</span>
+<span class="font-label-md text-label-md">Dashboard</span>
+</a>
+<!-- Reservations -->
+<a class="flex items-center gap-4 px-6 py-4 rounded-xl transition-all duration-200 text-on-surface-variant/60 hover:text-primary-fixed hover:bg-white/5" href="#">
+<span class="material-symbols-outlined">calendar_month</span>
+<span class="font-label-md text-label-md">Reservations</span>
+</a>
+<!-- Payments -->
+<a class="flex items-center gap-4 px-6 py-4 rounded-xl transition-all duration-200 text-on-surface-variant/60 hover:text-primary-fixed hover:bg-white/5" href="#">
+<span class="material-symbols-outlined">payments</span>
+<span class="font-label-md text-label-md">Payments</span>
+</a>
+<!-- Profile -->
+<a class="flex items-center gap-4 px-6 py-4 rounded-xl transition-all duration-200 text-on-surface-variant/60 hover:text-primary-fixed hover:bg-white/5" href="#">
+<span class="material-symbols-outlined">person</span>
+<span class="font-label-md text-label-md">Profile</span>
+</a>
+<!-- Fleet -->
+<a class="flex items-center gap-4 px-6 py-4 rounded-xl transition-all duration-200 text-on-surface-variant/60 hover:text-primary-fixed hover:bg-white/5" href="#">
+<span class="material-symbols-outlined">directions_car</span>
+<span class="font-label-md text-label-md">Fleet</span>
+</a>
+</nav>
+<div class="p-6 mb-4">
+<div class="glass p-6 rounded-lg relative overflow-hidden">
+<div class="relative z-10">
+<p class="font-label-sm text-label-sm text-on-surface-variant uppercase tracking-widest mb-1">Membership</p>
+<p class="font-headline-lg text-headline-lg text-primary-fixed mb-4">Gold Elite</p>
+<button class="w-full py-3 bg-primary-fixed-dim text-on-primary-fixed font-label-md text-label-md rounded-lg active:scale-95 transition-transform duration-200">
+                        View Benefits
+                    </button>
+</div>
+<div class="absolute -right-4 -bottom-4 opacity-10">
+<span class="material-symbols-outlined text-8xl">military_tech</span>
+</div>
+</div>
+</div>
+</aside>
+<!-- Top Navigation for Mobile (Hidden on Desktop) -->
+<header class="md:hidden fixed top-0 w-full z-50 bg-background/80 backdrop-blur-lg border-b border-white/10 h-20 flex justify-between items-center px-6">
+<h1 class="font-display-lg text-display-lg-mobile tracking-tighter text-primary-fixed-dim">DRIVENOW</h1>
+<button class="p-2 text-primary">
+<span class="material-symbols-outlined">menu</span>
+</button>
+</header>
+<!-- Main Content Canvas -->
+<main class="md:ml-72 min-h-screen pt-24 md:pt-0">
+<div class="max-w-container-max mx-auto px-6 md:px-margin-desktop py-12">
+<!-- Header Section -->
+<header class="flex flex-col md:flex-row md:items-end justify-between gap-6 mb-stack-xl">
+<div>
+<h2 class="font-headline-xl text-headline-xl text-primary mb-2">Welcome back, Alexander</h2>
+<p class="font-body-lg text-body-lg text-on-surface-variant">Your next journey begins in 48 hours. Ready for the asphalt?</p>
+</div>
+<div class="flex items-center gap-4">
+<button class="p-4 rounded-xl glass text-on-surface-variant hover:text-primary transition-colors">
+<span class="material-symbols-outlined">notifications</span>
+</button>
+<div class="flex items-center gap-4 glass pl-4 pr-2 py-2 rounded-xl">
+<div class="text-right">
+<p class="font-label-sm text-label-sm text-on-surface-variant uppercase">Loyalty Points</p>
+<p class="font-label-md text-label-md text-primary-fixed-dim">12,450 PTS</p>
+</div>
+<div class="w-10 h-10 rounded-lg bg-surface-variant overflow-hidden">
+<img class="w-full h-full object-cover" data-alt="A professional high-end studio portrait of a successful young executive man in his late 20s. He is wearing a dark charcoal tailored suit. The lighting is dramatic and moody, utilizing soft-box side lighting that highlights his features against a deep matte black background, perfectly matching the luxury automotive brand's aesthetic." src="https://lh3.googleusercontent.com/aida-public/AB6AXuCFIWMUtE9LzH0mZ4qrJKlAdzxXE4--XyCJEjxJsbg3toQDndN3ergWs1fhVKVwMIdOFN5aBspoNSKU3_5CsLBF1K5l5AWuvvpSX08rMGwNX7pubx0TaGzpMG6-NQ15vejVrugQ1bf5VMyKSC8gfBsjJzhehSavL6occtfAvKj3ZFBjUjkkELhz2hnLza1qd7s9llKOg4rZuEuXz-4_ZgkwwW5NLnXlQJj2Z7Qc5OzLZ7-ja5nYcO9VBA"/>
+</div>
+</div>
+</div>
+</header>
+<!-- Bento Dashboard Grid -->
+<div class="grid grid-cols-1 lg:grid-cols-3 gap-gutter mb-stack-xl">
+<!-- Current Reservation (Primary Bento) -->
+<div class="lg:col-span-2 glass rounded-lg overflow-hidden flex flex-col md:flex-row relative group cursor-pointer transition-all duration-500 hover:active-glow">
+<div class="flex-1 p-stack-lg relative z-10 flex flex-col justify-between">
+<div>
+<span class="inline-block px-3 py-1 bg-primary-fixed-dim/10 text-primary-fixed-dim text-label-sm font-label-sm rounded-full mb-4 border border-primary-fixed-dim/20 uppercase tracking-widest">Upcoming Journey</span>
+<h3 class="font-headline-xl text-headline-xl text-primary leading-tight mb-2">Porsche 911 GT3 RS</h3>
+<p class="font-body-md text-body-md text-on-surface-variant mb-6">Delivery to Mayfair Residence, London</p>
+<div class="grid grid-cols-2 gap-4">
+<div class="glass bg-white/5 p-4 rounded-lg">
+<p class="text-label-sm font-label-sm text-on-surface-variant uppercase mb-1">Pick Up</p>
+<p class="text-label-md font-label-md text-primary">Oct 24, 09:00 AM</p>
+</div>
+<div class="glass bg-white/5 p-4 rounded-lg">
+<p class="text-label-sm font-label-sm text-on-surface-variant uppercase mb-1">Return</p>
+<p class="text-label-md font-label-md text-primary">Oct 27, 06:00 PM</p>
+</div>
+</div>
+</div>
+<div class="mt-8 flex items-center gap-4">
+<button class="px-8 py-3 bg-primary-fixed-dim text-on-primary-fixed font-label-md text-label-md rounded-lg hover:brightness-110 active:scale-95 transition-all">Manage Trip</button>
+<button class="px-6 py-3 glass text-primary font-label-md text-label-md rounded-lg hover:bg-white/10 active:scale-95 transition-all">Digital Key</button>
+</div>
+</div>
+<div class="flex-1 h-64 md:h-auto min-h-[300px] relative">
+<img class="w-full h-full object-cover transform group-hover:scale-105 transition-transform duration-700" data-alt="A cinematic side profile shot of a sleek Porsche 911 GT3 RS in a sophisticated metallic chalk finish. The car is parked inside a futuristic, minimalist concrete garage with soft neon yellow lighting accents reflecting off the curves. High-end automotive photography style with deep blacks and sharp metallic highlights, matching a prestige dark mode UI." src="https://lh3.googleusercontent.com/aida-public/AB6AXuB488NGRJbSV3QFI6IYxu_kCTH1oJTgThwDg4xkqRWgR5GS-4tgkYkN2umN9IuSrPaGbN_Wn3dED3fRF2bRLLbAlc1PqUO4UeGm6Q6xfOJ01zMWnNoyn9HpBDd3b0Aaa2fTzXG4n-3F2IPrePH0JJv5mUBIdGNP9GpjAaJnpGb0dgGtKyEuACpzwc5W-UngcJv7QaDmf9oRsqaxPFHmTBoaozVO5LSGWJh8PTvvbjgvIybScaYKw5IdnA"/>
+<div class="absolute inset-0 bg-gradient-to-r from-background via-transparent to-transparent hidden md:block"></div>
+</div>
+</div>
+<!-- Notifications & Alerts -->
+<div class="glass rounded-lg p-stack-lg flex flex-col">
+<div class="flex items-center justify-between mb-6">
+<h4 class="font-headline-lg text-headline-lg text-primary">Concierge</h4>
+<span class="w-2 h-2 rounded-full bg-primary-fixed-dim animate-pulse"></span>
+</div>
+<div class="space-y-4 overflow-y-auto max-h-[360px] pr-2">
+<!-- Notification Item -->
+<div class="flex gap-4 p-4 rounded-xl hover:bg-white/5 transition-colors cursor-pointer">
+<div class="w-10 h-10 rounded-full bg-surface-variant flex items-center justify-center shrink-0">
+<span class="material-symbols-outlined text-primary-fixed-dim">verified_user</span>
+</div>
+<div>
+<p class="font-label-md text-label-md text-primary mb-1">Insurance Verified</p>
+<p class="text-label-sm font-label-sm text-on-surface-variant">Your documents for the London trip have been approved.</p>
+</div>
+</div>
+<!-- Notification Item -->
+<div class="flex gap-4 p-4 rounded-xl hover:bg-white/5 transition-colors cursor-pointer">
+<div class="w-10 h-10 rounded-full bg-surface-variant flex items-center justify-center shrink-0">
+<span class="material-symbols-outlined text-primary-fixed-dim">celebration</span>
+</div>
+<div>
+<p class="font-label-md text-label-md text-primary mb-1">Gold Reward</p>
+<p class="text-label-sm font-label-sm text-on-surface-variant">You've earned 500 bonus points for your 10th rental!</p>
+</div>
+</div>
+<!-- Notification Item -->
+<div class="flex gap-4 p-4 rounded-xl hover:bg-white/5 transition-colors cursor-pointer opacity-60">
+<div class="w-10 h-10 rounded-full bg-surface-variant flex items-center justify-center shrink-0">
+<span class="material-symbols-outlined text-primary-fixed-dim">credit_card</span>
+</div>
+<div>
+<p class="font-label-md text-label-md text-primary mb-1">Payment Method Expiring</p>
+<p class="text-label-sm font-label-sm text-on-surface-variant">Your Visa ending in 4421 expires next month.</p>
+</div>
+</div>
+</div>
+<button class="mt-auto pt-4 text-center font-label-sm text-label-sm text-on-surface-variant hover:text-primary transition-colors uppercase tracking-widest">
+                        Clear all notifications
+                    </button>
+</div>
+</div>
+<!-- Recent History & Analytics -->
+<section class="mb-stack-xl">
+<div class="flex items-center justify-between mb-8">
+<h4 class="font-headline-lg text-headline-lg text-primary">Recent Experiences</h4>
+<a class="font-label-md text-label-md text-primary-fixed-dim flex items-center gap-2 group" href="#">
+                        Full Reservation History
+                        <span class="material-symbols-outlined text-sm transform group-hover:translate-x-1 transition-transform">arrow_forward</span>
+</a>
+</div>
+<div class="space-y-4">
+<!-- Reservation Row -->
+<div class="glass flex flex-col md:flex-row items-center gap-6 p-6 rounded-lg group hover:bg-white/5 transition-all">
+<div class="w-32 h-20 rounded-lg overflow-hidden shrink-0">
+<img class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500" data-alt="A high-end close-up of a dark grey Aston Martin Vantage. The photo focuses on the front grille and headlight, with a sharp focus and shallow depth of field. The lighting is moody and dramatic with cold blue and warm golden highlights on the metallic surface, consistent with a premium automotive dashboard theme." src="https://lh3.googleusercontent.com/aida-public/AB6AXuAbbrU9LwPnkZiPR9Z3HEGY_rhtBJc66rsbVpV3f3i2pjbxbkmXB0V9ZHoSUii3gpYUm99YLT-Vn8A3qaB4U6F50wAKejlP01I7J6bFJwWHDLaM717FMuP0IyjZYdIYJgdXv_fJZFH25Xbh96_ThAVgm1ul5bD80i2xUx4cCkxX2BgdGWK8yDiR1eE6w-dwEJJhXyqpya38gM0i1e_ci5wjSupJXIhihK_D-lxXeQoywm_2MHbwpqJoig"/>
+</div>
+<div class="flex-1 text-center md:text-left">
+<p class="font-label-md text-label-md text-primary">Aston Martin Vantage</p>
+<p class="text-label-sm font-label-sm text-on-surface-variant">Completed Sep 15 - Sep 18, 2024</p>
+</div>
+<div class="grid grid-cols-3 gap-8 px-8 border-x border-white/5 hidden lg:grid">
+<div class="text-center">
+<p class="text-label-sm font-label-sm text-on-surface-variant uppercase mb-1">Distance</p>
+<p class="text-label-md font-label-md text-primary">420 mi</p>
+</div>
+<div class="text-center">
+<p class="text-label-sm font-label-sm text-on-surface-variant uppercase mb-1">Fuel Used</p>
+<p class="text-label-md font-label-md text-primary">12.5 gal</p>
+</div>
+<div class="text-center">
+<p class="text-label-sm font-label-sm text-on-surface-variant uppercase mb-1">Rating</p>
+<div class="flex items-center gap-1 justify-center text-primary-fixed-dim">
+<span class="material-symbols-outlined text-sm" style="font-variation-settings: 'FILL' 1;">star</span>
+<p class="text-label-md font-label-md">5.0</p>
+</div>
+</div>
+</div>
+<div class="flex items-center gap-4 shrink-0">
+<button class="p-3 rounded-lg border border-white/10 text-on-surface-variant hover:text-primary transition-colors">
+<span class="material-symbols-outlined">receipt_long</span>
+</button>
+<button class="px-6 py-2 border border-primary-fixed-dim/30 text-primary-fixed-dim rounded-lg hover:bg-primary-fixed-dim hover:text-on-primary-fixed transition-all">Rebook</button>
+</div>
+</div>
+<!-- Reservation Row 2 -->
+<div class="glass flex flex-col md:flex-row items-center gap-6 p-6 rounded-lg group hover:bg-white/5 transition-all">
+<div class="w-32 h-20 rounded-lg overflow-hidden shrink-0">
+<img class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500" data-alt="A professional studio photo of a black Mercedes-Benz S-Class sedan. The car is shot at a low angle in a clean, dark minimalist space. The chrome details are glistening under soft overhead lighting, creating a high-prestige executive atmosphere. The style is clean, modern, and high-fidelity automotive advertising." src="https://lh3.googleusercontent.com/aida-public/AB6AXuBxI-oByn7mlMh_YFG8K20BbVjBfMu5DVLv-n-9F96Gcrr57_31sbK2gbmtCTxb2j2Ck2PFcaTYGVu8xAIIiG5GnM9qlGwHdwcP6wiFFrjueWVfa4Sg0pkRNcPvoFfV1Y7EfM9scxJ3dnmye7dNjPb3b5YOivmCGfEwi2udltXYL8BQAmSKLC1TAnGixWkroydNeA33-6m-id9eXmXcKr74mY5tr5AOr2mqIMcuaGXFe3Th7owvg3I_WQ"/>
+</div>
+<div class="flex-1 text-center md:text-left">
+<p class="font-label-md text-label-md text-primary">Mercedes-Benz S-Class</p>
+<p class="text-label-sm font-label-sm text-on-surface-variant">Completed Aug 28 - Aug 30, 2024</p>
+</div>
+<div class="grid grid-cols-3 gap-8 px-8 border-x border-white/5 hidden lg:grid">
+<div class="text-center">
+<p class="text-label-sm font-label-sm text-on-surface-variant uppercase mb-1">Distance</p>
+<p class="text-label-md font-label-md text-primary">156 mi</p>
+</div>
+<div class="text-center">
+<p class="text-label-sm font-label-sm text-on-surface-variant uppercase mb-1">Fuel Used</p>
+<p class="text-label-md font-label-md text-primary">4.2 gal</p>
+</div>
+<div class="text-center">
+<p class="text-label-sm font-label-sm text-on-surface-variant uppercase mb-1">Rating</p>
+<div class="flex items-center gap-1 justify-center text-primary-fixed-dim">
+<span class="material-symbols-outlined text-sm" style="font-variation-settings: 'FILL' 1;">star</span>
+<p class="text-label-md font-label-md">4.8</p>
+</div>
+</div>
+</div>
+<div class="flex items-center gap-4 shrink-0">
+<button class="p-3 rounded-lg border border-white/10 text-on-surface-variant hover:text-primary transition-colors">
+<span class="material-symbols-outlined">receipt_long</span>
+</button>
+<button class="px-6 py-2 border border-primary-fixed-dim/30 text-primary-fixed-dim rounded-lg hover:bg-primary-fixed-dim hover:text-on-primary-fixed transition-all">Rebook</button>
+</div>
+</div>
+</div>
+</section>
+<!-- Bottom Quick Actions / Payments Summary -->
+<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-gutter">
+<div class="glass p-6 rounded-lg text-center group cursor-pointer hover:border-primary-fixed-dim/40 transition-colors">
+<span class="material-symbols-outlined text-primary-fixed-dim text-3xl mb-4">payments</span>
+<h5 class="text-label-md font-label-md text-primary mb-1">Pending Invoices</h5>
+<p class="text-headline-lg font-headline-lg text-primary">$0.00</p>
+</div>
+<div class="glass p-6 rounded-lg text-center group cursor-pointer hover:border-primary-fixed-dim/40 transition-colors">
+<span class="material-symbols-outlined text-primary-fixed-dim text-3xl mb-4">support_agent</span>
+<h5 class="text-label-md font-label-md text-primary mb-1">Concierge Chat</h5>
+<p class="text-label-sm font-label-sm text-on-surface-variant">Average response: 2 mins</p>
+</div>
+<div class="glass p-6 rounded-lg text-center group cursor-pointer hover:border-primary-fixed-dim/40 transition-colors">
+<span class="material-symbols-outlined text-primary-fixed-dim text-3xl mb-4">add_card</span>
+<h5 class="text-label-md font-label-md text-primary mb-1">Add Credit</h5>
+<p class="text-label-sm font-label-sm text-on-surface-variant">Top up your wallet</p>
+</div>
+<div class="glass p-6 rounded-lg text-center group cursor-pointer hover:border-primary-fixed-dim/40 transition-colors">
+<span class="material-symbols-outlined text-primary-fixed-dim text-3xl mb-4">handshake</span>
+<h5 class="text-label-md font-label-md text-primary mb-1">Refer a Peer</h5>
+<p class="text-label-sm font-label-sm text-on-surface-variant">Earn 2,000 Points</p>
+</div>
+</div>
+</div>
+<!-- Footer Shell -->
+<footer class="w-full py-stack-xl flex flex-col items-center gap-stack-lg px-margin-mobile border-t border-white/5 mt-12">
+<p class="font-display-lg text-headline-xl text-primary tracking-tighter opacity-50">DRIVENOW</p>
+<nav class="flex gap-8">
+<a class="font-label-md text-label-md text-on-surface-variant hover:text-primary-fixed transition-colors" href="#">Privacy</a>
+<a class="font-label-md text-label-md text-on-surface-variant hover:text-primary-fixed transition-colors" href="#">Terms</a>
+<a class="font-label-md text-label-md text-on-surface-variant hover:text-primary-fixed transition-colors" href="#">Contact</a>
+<a class="font-label-md text-label-md text-on-surface-variant hover:text-primary-fixed transition-colors" href="#">Fleet</a>
+</nav>
+<p class="font-label-sm text-label-sm text-on-surface-variant/40">© 2024 DRIVENOW PRESTIGE. ALL RIGHTS RESERVED.</p>
+</footer>
+</main>
+<!-- Mobile Bottom Nav -->
+<nav class="md:hidden fixed bottom-0 left-0 w-full z-50 flex justify-around items-center px-4 py-3 pb-safe bg-surface-container/90 backdrop-blur-xl border-t border-white/10 shadow-[0_-4px_24px_rgba(233,196,0,0.1)] rounded-t-lg">
+<a class="flex flex-col items-center justify-center text-primary-fixed-dim bg-white/5 rounded-xl p-2 scale-90" href="#">
+<span class="material-symbols-outlined" data-weight="fill">home</span>
+<span class="font-label-sm text-label-sm">Home</span>
+</a>
+<a class="flex flex-col items-center justify-center text-on-surface-variant/60 p-2 hover:text-primary-fixed transition-colors" href="#">
+<span class="material-symbols-outlined">directions_car</span>
+<span class="font-label-sm text-label-sm">Fleet</span>
+</a>
+<a class="flex flex-col items-center justify-center text-on-surface-variant/60 p-2 hover:text-primary-fixed transition-colors" href="#">
+<span class="material-symbols-outlined">calendar_month</span>
+<span class="font-label-sm text-label-sm">Book</span>
+</a>
+<a class="flex flex-col items-center justify-center text-on-surface-variant/60 p-2 hover:text-primary-fixed transition-colors" href="#">
+<span class="material-symbols-outlined">dashboard</span>
+<span class="font-label-sm text-label-sm">Dashboard</span>
+</a>
+<a class="flex flex-col items-center justify-center text-on-surface-variant/60 p-2 hover:text-primary-fixed transition-colors" href="#">
+<span class="material-symbols-outlined">menu</span>
+<span class="font-label-sm text-label-sm">Menu</span>
+</a>
+</nav>
+<script>
+        // Simple interaction script
+        document.querySelectorAll('a, button').forEach(el => {
+            el.addEventListener('click', (e) => {
+                const ripple = document.createElement('div');
+                ripple.style.position = 'absolute';
+                ripple.style.width = '2px';
+                ripple.style.height = '2px';
+                ripple.style.background = 'rgba(255,255,255,0.2)';
+                ripple.style.borderRadius = '50%';
+                ripple.style.transform = 'scale(0)';
+                ripple.style.animation = 'ripple 0.6s linear';
+                ripple.style.left = `${e.clientX - el.offsetLeft}px`;
+                ripple.style.top = `${e.clientY - el.offsetTop}px`;
+                
+                if(el.style.position !== 'absolute' && el.style.position !== 'fixed') {
+                    el.style.position = 'relative';
+                }
+                el.style.overflow = 'hidden';
+                el.appendChild(ripple);
+                
+                setTimeout(() => ripple.remove(), 600);
+            });
+        });
+
+        const style = document.createElement('style');
+        style.innerHTML = `
+            @keyframes ripple {
+                to { transform: scale(150); opacity: 0; }
+            }
+        `;
+        document.head.appendChild(style);
+    </script>
+</body></html>

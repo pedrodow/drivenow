@@ -1,0 +1,464 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Fleet | DRIVENOW PRESTIGE</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "on-primary": "#3a3000",
+                        "surface-container-high": "#2a2a2c",
+                        "error-container": "#93000a",
+                        "on-tertiary-fixed-variant": "#47464b",
+                        "on-secondary-fixed": "#1b1b1f",
+                        "inverse-primary": "#705d00",
+                        "surface-tint": "#e9c400",
+                        "on-secondary": "#303034",
+                        "tertiary-fixed": "#e4e1e7",
+                        "inverse-on-surface": "#303032",
+                        "error": "#ffb4ab",
+                        "tertiary": "#f8f5fb",
+                        "outline": "#999077",
+                        "on-surface-variant": "#d0c6ab",
+                        "surface-dim": "#131315",
+                        "outline-variant": "#4d4732",
+                        "on-tertiary": "#303034",
+                        "on-tertiary-container": "#5f5e63",
+                        "on-error-container": "#ffdad6",
+                        "tertiary-fixed-dim": "#c8c5cb",
+                        "on-secondary-container": "#b6b4b9",
+                        "on-surface": "#e5e1e4",
+                        "surface-container-lowest": "#0e0e10",
+                        "surface-container-highest": "#353437",
+                        "secondary": "#c8c5cb",
+                        "primary-container": "#ffd700",
+                        "surface-container": "#201f21",
+                        "on-primary-fixed-variant": "#544600",
+                        "primary": "#fff6df",
+                        "primary-fixed-dim": "#e9c400",
+                        "secondary-container": "#47464b",
+                        "surface-bright": "#39393b",
+                        "tertiary-container": "#dbd9de",
+                        "inverse-surface": "#e5e1e4",
+                        "surface-variant": "#353437",
+                        "on-secondary-fixed-variant": "#47464b",
+                        "on-tertiary-fixed": "#1b1b1f",
+                        "on-background": "#e5e1e4",
+                        "on-primary-fixed": "#221b00",
+                        "on-primary-container": "#705e00",
+                        "surface": "#131315",
+                        "on-error": "#690005",
+                        "primary-fixed": "#ffe16d",
+                        "surface-container-low": "#1b1b1d",
+                        "secondary-fixed": "#e4e1e7",
+                        "secondary-fixed-dim": "#c8c5cb",
+                        "background": "#131315"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "1rem",
+                        "lg": "2rem",
+                        "xl": "3rem",
+                        "full": "9999px"
+                    },
+                    "spacing": {
+                        "stack-sm": "8px",
+                        "margin-desktop": "64px",
+                        "stack-lg": "32px",
+                        "container-max": "1280px",
+                        "stack-md": "16px",
+                        "margin-mobile": "20px",
+                        "gutter": "24px",
+                        "stack-xl": "64px"
+                    },
+                    "fontFamily": {
+                        "display-lg": ["Plus Jakarta Sans"],
+                        "label-sm": ["Plus Jakarta Sans"],
+                        "headline-lg": ["Plus Jakarta Sans"],
+                        "body-md": ["Plus Jakarta Sans"],
+                        "headline-xl": ["Plus Jakarta Sans"],
+                        "display-lg-mobile": ["Plus Jakarta Sans"],
+                        "body-lg": ["Plus Jakarta Sans"],
+                        "label-md": ["Plus Jakarta Sans"]
+                    },
+                    "fontSize": {
+                        "display-lg": ["64px", { "lineHeight": "1.1", "letterSpacing": "-0.04em", "fontWeight": "700" }],
+                        "label-sm": ["12px", { "lineHeight": "1", "letterSpacing": "0.05em", "fontWeight": "600" }],
+                        "headline-lg": ["28px", { "lineHeight": "1.3", "letterSpacing": "-0.01em", "fontWeight": "600" }],
+                        "body-md": ["16px", { "lineHeight": "1.6", "letterSpacing": "0em", "fontWeight": "400" }],
+                        "headline-xl": ["36px", { "lineHeight": "1.2", "letterSpacing": "-0.02em", "fontWeight": "600" }],
+                        "display-lg-mobile": ["40px", { "lineHeight": "1.2", "letterSpacing": "-0.02em", "fontWeight": "700" }],
+                        "body-lg": ["18px", { "lineHeight": "1.6", "letterSpacing": "0em", "fontWeight": "400" }],
+                        "label-md": ["14px", { "lineHeight": "1", "letterSpacing": "0.02em", "fontWeight": "500" }]
+                    }
+                },
+            },
+        }
+    </script>
+<style>
+        body {
+            background-color: #131315;
+            color: #e5e1e4;
+            font-family: 'Plus Jakarta Sans', sans-serif;
+            -webkit-font-smoothing: antialiased;
+        }
+        .glass-card {
+            background: rgba(255, 255, 255, 0.03);
+            backdrop-filter: blur(16px);
+            -webkit-backdrop-filter: blur(16px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            transition: transform 0.4s cubic-bezier(0.4, 0, 0.2, 1), box-shadow 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+        .glass-card:hover {
+            transform: translateY(-12px);
+            box-shadow: 0 20px 40px rgba(0,0,0,0.4);
+        }
+        .btn-glow:hover {
+            box-shadow: 0 0 15px rgba(233, 196, 0, 0.3);
+        }
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+            vertical-align: middle;
+        }
+        .hide-scrollbar::-webkit-scrollbar {
+            display: none;
+        }
+        .hide-scrollbar {
+            -ms-overflow-style: none;
+            scrollbar-width: none;
+        }
+    </style>
+</head>
+<body class="bg-background text-on-surface">
+<!-- Top App Bar -->
+<header class="fixed top-0 w-full z-50 bg-background/80 backdrop-blur-lg border-b border-white/10 h-20 flex items-center justify-center">
+<div class="flex justify-between items-center px-margin-mobile h-full w-full max-w-container-max mx-auto">
+<div class="flex items-center gap-4">
+<button class="hover:opacity-80 transition-opacity active:scale-95 duration-200">
+<span class="material-symbols-outlined text-primary text-3xl">menu</span>
+</button>
+<h1 class="font-display-lg text-display-lg-mobile md:text-display-lg tracking-tighter text-primary-fixed-dim">DRIVENOW</h1>
+</div>
+<div class="hidden md:flex gap-8 items-center">
+<a class="font-label-md text-label-md text-on-surface-variant hover:text-primary transition-colors" href="#">Home</a>
+<a class="font-label-md text-label-md text-primary font-bold" href="#">Fleet</a>
+<a class="font-label-md text-label-md text-on-surface-variant hover:text-primary transition-colors" href="#">Book</a>
+<a class="font-label-md text-label-md text-on-surface-variant hover:text-primary transition-colors" href="#">Dashboard</a>
+</div>
+<div class="flex items-center">
+<div class="w-10 h-10 rounded-full bg-surface-container-highest border border-white/10 overflow-hidden">
+<img class="w-full h-full object-cover" data-alt="A professional close-up headshot of a premium car rental customer, styled for high-end luxury marketing. The lighting is sophisticated, with a soft golden rim light highlighting facial features against a blurred, dark interior background. The overall aesthetic is executive, minimalist, and high-fidelity, matching the dark theme of the DRIVENOW platform." src="https://lh3.googleusercontent.com/aida-public/AB6AXuDvuEqulqRkCb-SMbqX8gU8d56inP394oNTIkYdjckwiadl2LzIfFJ-hNCjw8zrFcKYPqpFv5eGBWRA9AqIrN2-DUJTMIZ_et6RuBZvcMWvgW8-j3fenyLYd-4o9-C7oPhoWB7X8n5wx86I4bjHY3RcztzQ6wDAxmwZ3Z2JuQn0vXtDHXdYBylAdDEx3sLaEF_4S0icoG-iOB9G-kCPznqJbk44ytAOuZPu2u2n4se_omaHTSWI4oCmMg"/>
+</div>
+</div>
+</div>
+</header>
+<main class="pt-32 pb-40 min-h-screen px-margin-mobile md:px-margin-desktop max-w-container-max mx-auto">
+<!-- Search & Filter Header -->
+<section class="mb-stack-xl">
+<div class="flex flex-col md:flex-row md:items-end justify-between gap-stack-lg">
+<div>
+<span class="font-label-sm text-label-sm text-primary-fixed-dim tracking-[0.2em] uppercase">Executive Fleet</span>
+<h2 class="font-headline-xl text-headline-xl text-white mt-2">Find Your Perfect Drive</h2>
+</div>
+<div class="glass-card rounded-2xl p-2 flex flex-wrap items-center gap-2 max-w-2xl">
+<div class="flex-1 min-w-[140px] px-4 py-2 border-r border-white/10 hidden sm:block">
+<label class="block text-[10px] text-on-surface-variant/60 uppercase font-bold tracking-widest">Category</label>
+<select class="bg-transparent border-none p-0 text-label-md font-medium text-white focus:ring-0 w-full cursor-pointer">
+<option>All Categories</option>
+<option>Sedan</option>
+<option>SUV</option>
+<option>Electric</option>
+<option>Sport</option>
+</select>
+</div>
+<div class="flex-1 min-w-[140px] px-4 py-2 border-r border-white/10 hidden sm:block">
+<label class="block text-[10px] text-on-surface-variant/60 uppercase font-bold tracking-widest">Fuel Type</label>
+<select class="bg-transparent border-none p-0 text-label-md font-medium text-white focus:ring-0 w-full cursor-pointer">
+<option>Any Fuel</option>
+<option>Electric</option>
+<option>Petrol</option>
+<option>Hybrid</option>
+</select>
+</div>
+<div class="flex-1 min-w-[120px] px-4 py-2 hidden sm:block">
+<label class="block text-[10px] text-on-surface-variant/60 uppercase font-bold tracking-widest">Price Range</label>
+<select class="bg-transparent border-none p-0 text-label-md font-medium text-white focus:ring-0 w-full cursor-pointer">
+<option>Any Price</option>
+<option>$100 - $300</option>
+<option>$300 - $600</option>
+<option>$600+</option>
+</select>
+</div>
+<button class="bg-primary-fixed-dim text-on-primary-fixed px-6 py-3 rounded-xl flex items-center gap-2 hover:bg-primary-fixed transition-colors active:scale-95">
+<span class="material-symbols-outlined text-[20px]">search</span>
+<span class="font-label-md">Search</span>
+</button>
+</div>
+</div>
+<!-- Mobile Filter Chips -->
+<div class="flex sm:hidden overflow-x-auto gap-3 mt-stack-md py-2 hide-scrollbar">
+<button class="px-5 py-2 rounded-full border border-primary-fixed-dim bg-primary-fixed-dim/10 text-primary-fixed-dim whitespace-nowrap text-label-sm">All Vehicles</button>
+<button class="px-5 py-2 rounded-full border border-white/10 text-on-surface-variant whitespace-nowrap text-label-sm">Sedan</button>
+<button class="px-5 py-2 rounded-full border border-white/10 text-on-surface-variant whitespace-nowrap text-label-sm">SUV</button>
+<button class="px-5 py-2 rounded-full border border-white/10 text-on-surface-variant whitespace-nowrap text-label-sm">Electric</button>
+</div>
+</section>
+<!-- Fleet Grid -->
+<section class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-gutter">
+<!-- Vehicle Card 1 -->
+<div class="glass-card group rounded-lg overflow-hidden flex flex-col">
+<div class="relative h-64 overflow-hidden">
+<img class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110" src="https://lh3.googleusercontent.com/aida-public/AB6AXuA--QxgDUA5LmjRclyR0GxYEbsua274bjL42eB_j3T3FJ4GUk14b2e1C80LjPt09ObxuPVBpdzVdw_8Kpj6wDZRY2i7CmMRY8K5ZMHTPv96QIV__2h4W3KngVtzfk7C0QwAC5VzEL0z1oeFuoaTFOZqyPW6HGAtNkiywQoRReDr-FohjOSEkEyQFc9EVr2P_UD2U2Cj5qtkcaaJnEUMKI8S1JXcvNHFlwfTUOb667_vRZFtnk-Ic-wcRQ"/>
+<div class="absolute top-4 left-4 bg-background/60 backdrop-blur-md px-3 py-1 rounded-full border border-white/10">
+<span class="font-label-sm text-label-sm text-white uppercase">Sedan</span>
+</div>
+<div class="absolute top-4 right-4 bg-primary-container text-on-primary-container px-3 py-1 rounded-full text-[10px] font-bold tracking-widest uppercase">Popular</div>
+</div>
+<div class="p-6 flex flex-col flex-1">
+<div class="flex justify-between items-start mb-4">
+<div>
+<h3 class="font-headline-lg text-headline-lg text-white mb-1">BMW M5 Competition</h3>
+<p class="font-body-md text-body-md text-on-surface-variant/80">The ultimate high-performance sedan.</p>
+</div>
+</div>
+<div class="grid grid-cols-2 gap-4 mb-8">
+<div class="flex items-center gap-3">
+<div class="w-10 h-10 rounded-xl bg-white/5 flex items-center justify-center">
+<span class="material-symbols-outlined text-primary-fixed-dim text-[20px]">settings_input_component</span>
+</div>
+<div class="flex flex-col">
+<span class="text-[10px] uppercase text-on-surface-variant/40 font-bold">Transmission</span>
+<span class="text-label-md text-white">Auto</span>
+</div>
+</div>
+<div class="flex items-center gap-3">
+<div class="w-10 h-10 rounded-xl bg-white/5 flex items-center justify-center">
+<span class="material-symbols-outlined text-primary-fixed-dim text-[20px]">person</span>
+</div>
+<div class="flex flex-col">
+<span class="text-[10px] uppercase text-on-surface-variant/40 font-bold">Seats</span>
+<span class="text-label-md text-white">5</span>
+</div>
+</div>
+<div class="flex items-center gap-3">
+<div class="w-10 h-10 rounded-xl bg-white/5 flex items-center justify-center">
+<span class="material-symbols-outlined text-primary-fixed-dim text-[20px]">work</span>
+</div>
+<div class="flex flex-col">
+<span class="text-[10px] uppercase text-on-surface-variant/40 font-bold">Luggage</span>
+<span class="text-label-md text-white">2 Large</span>
+</div>
+</div>
+<div class="flex items-center gap-3">
+<div class="w-10 h-10 rounded-xl bg-white/5 flex items-center justify-center">
+<span class="material-symbols-outlined text-primary-fixed-dim text-[20px]">local_gas_station</span>
+</div>
+<div class="flex flex-col">
+<span class="text-[10px] uppercase text-on-surface-variant/40 font-bold">Fuel</span>
+<span class="text-label-md text-white">Petrol</span>
+</div>
+</div>
+</div>
+<div class="mt-auto pt-6 border-t border-white/5 flex items-center justify-between">
+<div>
+<span class="font-display-lg text-primary-fixed-dim text-[24px]">$199</span>
+<span class="text-on-surface-variant/60 text-sm">/day</span>
+</div>
+<button class="bg-primary-fixed-dim text-on-primary-fixed font-bold py-3 px-8 rounded-xl transition-all active:scale-95 btn-glow">Reserve</button>
+</div>
+</div>
+</div>
+<!-- Vehicle Card 2 -->
+<div class="glass-card group rounded-lg overflow-hidden flex flex-col">
+<div class="relative h-64 overflow-hidden">
+<img class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110" src="https://lh3.googleusercontent.com/aida-public/AB6AXuC4qlgNhHnZoouePKDTPA3os9ZEXG5_mSEtV4xU-aOoBGZ_LTT8DiurmZo60aH54nuBpZwmyeOMPhjdw2JT_emv1c8WbfcHxO5DjdzAIoW3VLDJIwyEbY4iuQpPi6UzHidX5D07vcMBnP6fSQOYk4IyJ6CCWyszm5U6qdo_gWechggKl-iDhsPQNNi1-12dSS1QVVXfx-ihnjXPDQmca3ej6-W4v4F0p8hij2rAKqflSW5saZCCYlydvw"/>
+<div class="absolute top-4 left-4 bg-background/60 backdrop-blur-md px-3 py-1 rounded-full border border-white/10">
+<span class="font-label-sm text-label-sm text-white uppercase">EV</span>
+</div>
+</div>
+<div class="p-6 flex flex-col flex-1">
+<div class="flex justify-between items-start mb-4">
+<div>
+<h3 class="font-headline-lg text-headline-lg text-white mb-1">Audi e-tron GT</h3>
+<p class="font-body-md text-body-md text-on-surface-variant/80">Futuristic luxury, electrified.</p>
+</div>
+</div>
+<div class="grid grid-cols-2 gap-4 mb-8">
+<div class="flex items-center gap-3">
+<div class="w-10 h-10 rounded-xl bg-white/5 flex items-center justify-center">
+<span class="material-symbols-outlined text-primary-fixed-dim text-[20px]">settings_input_component</span>
+</div>
+<div class="flex flex-col">
+<span class="text-[10px] uppercase text-on-surface-variant/40 font-bold">Transmission</span>
+<span class="text-label-md text-white">Auto</span>
+</div>
+</div>
+<div class="flex items-center gap-3">
+<div class="w-10 h-10 rounded-xl bg-white/5 flex items-center justify-center">
+<span class="material-symbols-outlined text-primary-fixed-dim text-[20px]">person</span>
+</div>
+<div class="flex flex-col">
+<span class="text-[10px] uppercase text-on-surface-variant/40 font-bold">Seats</span>
+<span class="text-label-md text-white">5</span>
+</div>
+</div>
+<div class="flex items-center gap-3">
+<div class="w-10 h-10 rounded-xl bg-white/5 flex items-center justify-center">
+<span class="material-symbols-outlined text-primary-fixed-dim text-[20px]">work</span>
+</div>
+<div class="flex flex-col">
+<span class="text-[10px] uppercase text-on-surface-variant/40 font-bold">Luggage</span>
+<span class="text-label-md text-white">1 Large</span>
+</div>
+</div>
+<div class="flex items-center gap-3">
+<div class="w-10 h-10 rounded-xl bg-white/5 flex items-center justify-center">
+<span class="material-symbols-outlined text-primary-fixed-dim text-[20px]">ev_station</span>
+</div>
+<div class="flex flex-col">
+<span class="text-[10px] uppercase text-on-surface-variant/40 font-bold">Fuel</span>
+<span class="text-label-md text-white">Electric</span>
+</div>
+</div>
+</div>
+<div class="mt-auto pt-6 border-t border-white/5 flex items-center justify-between">
+<div>
+<span class="font-display-lg text-primary-fixed-dim text-[24px]">$249</span>
+<span class="text-on-surface-variant/60 text-sm">/day</span>
+</div>
+<button class="bg-primary-fixed-dim text-on-primary-fixed font-bold py-3 px-8 rounded-xl transition-all active:scale-95 btn-glow">Reserve</button>
+</div>
+</div>
+</div>
+<!-- Vehicle Card 3 (Repeat/Alternate) -->
+<div class="glass-card group rounded-lg overflow-hidden flex flex-col">
+<div class="relative h-64 overflow-hidden">
+<img class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110" src="https://lh3.googleusercontent.com/aida-public/AB6AXuA--QxgDUA5LmjRclyR0GxYEbsua274bjL42eB_j3T3FJ4GUk14b2e1C80LjPt09ObxuPVBpdzVdw_8Kpj6wDZRY2i7CmMRY8K5ZMHTPv96QIV__2h4W3KngVtzfk7C0QwAC5VzEL0z1oeFuoaTFOZqyPW6HGAtNkiywQoRReDr-FohjOSEkEyQFc9EVr2P_UD2U2Cj5qtkcaaJnEUMKI8S1JXcvNHFlwfTUOb667_vRZFtnk-Ic-wcRQ"/>
+<div class="absolute top-4 left-4 bg-background/60 backdrop-blur-md px-3 py-1 rounded-full border border-white/10">
+<span class="font-label-sm text-label-sm text-white uppercase">SUV</span>
+</div>
+</div>
+<div class="p-6 flex flex-col flex-1">
+<div class="flex justify-between items-start mb-4">
+<div>
+<h3 class="font-headline-lg text-headline-lg text-white mb-1">Range Rover Autobiography</h3>
+<p class="font-body-md text-body-md text-on-surface-variant/80">Command the road in ultimate luxury.</p>
+</div>
+</div>
+<div class="grid grid-cols-2 gap-4 mb-8">
+<div class="flex items-center gap-3">
+<div class="w-10 h-10 rounded-xl bg-white/5 flex items-center justify-center">
+<span class="material-symbols-outlined text-primary-fixed-dim text-[20px]">settings_input_component</span>
+</div>
+<div class="flex flex-col">
+<span class="text-[10px] uppercase text-on-surface-variant/40 font-bold">Transmission</span>
+<span class="text-label-md text-white">Auto</span>
+</div>
+</div>
+<div class="flex items-center gap-3">
+<div class="w-10 h-10 rounded-xl bg-white/5 flex items-center justify-center">
+<span class="material-symbols-outlined text-primary-fixed-dim text-[20px]">person</span>
+</div>
+<div class="flex flex-col">
+<span class="text-[10px] uppercase text-on-surface-variant/40 font-bold">Seats</span>
+<span class="text-label-md text-white">7</span>
+</div>
+</div>
+<div class="flex items-center gap-3">
+<div class="w-10 h-10 rounded-xl bg-white/5 flex items-center justify-center">
+<span class="material-symbols-outlined text-primary-fixed-dim text-[20px]">work</span>
+</div>
+<div class="flex flex-col">
+<span class="text-[10px] uppercase text-on-surface-variant/40 font-bold">Luggage</span>
+<span class="text-label-md text-white">4 Large</span>
+</div>
+</div>
+<div class="flex items-center gap-3">
+<div class="w-10 h-10 rounded-xl bg-white/5 flex items-center justify-center">
+<span class="material-symbols-outlined text-primary-fixed-dim text-[20px]">local_gas_station</span>
+</div>
+<div class="flex flex-col">
+<span class="text-[10px] uppercase text-on-surface-variant/40 font-bold">Fuel</span>
+<span class="text-label-md text-white">Petrol</span>
+</div>
+</div>
+</div>
+<div class="mt-auto pt-6 border-t border-white/5 flex items-center justify-between">
+<div>
+<span class="font-display-lg text-primary-fixed-dim text-[24px]">$320</span>
+<span class="text-on-surface-variant/60 text-sm">/day</span>
+</div>
+<button class="bg-primary-fixed-dim text-on-primary-fixed font-bold py-3 px-8 rounded-xl transition-all active:scale-95 btn-glow">Reserve</button>
+</div>
+</div>
+</div>
+</section>
+</main>
+<!-- Footer -->
+<footer class="w-full py-stack-xl flex flex-col items-center gap-stack-lg px-margin-mobile w-full bg-surface-container-lowest">
+<div class="max-w-container-max mx-auto w-full flex flex-col items-center gap-8">
+<h2 class="font-display-lg text-display-lg text-primary">DRIVENOW</h2>
+<div class="flex flex-wrap justify-center gap-stack-lg">
+<a class="font-body-md text-body-md text-on-surface-variant hover:text-primary-fixed transition-colors" href="#">Privacy</a>
+<a class="font-body-md text-body-md text-on-surface-variant hover:text-primary-fixed transition-colors" href="#">Terms</a>
+<a class="font-body-md text-body-md text-on-surface-variant hover:text-primary-fixed transition-colors" href="#">Contact</a>
+<a class="font-body-md text-body-md text-primary font-bold" href="#">Fleet</a>
+</div>
+<p class="font-label-sm text-on-surface-variant/40 tracking-widest uppercase">© 2024 DRIVENOW PRESTIGE. ALL RIGHTS RESERVED.</p>
+</div>
+</footer>
+<!-- Bottom Navigation Bar (Mobile) -->
+<nav class="md:hidden fixed bottom-0 left-0 w-full z-50 flex justify-around items-center px-4 py-3 pb-safe bg-surface-container/90 backdrop-blur-xl border-t border-white/10 shadow-[0_-4px_24px_rgba(233,196,0,0.1)] rounded-t-lg">
+<a class="flex flex-col items-center justify-center text-on-surface-variant/60 p-2 hover:text-primary-fixed transition-colors" href="#">
+<span class="material-symbols-outlined">home</span>
+<span class="font-label-sm text-label-sm">Home</span>
+</a>
+<a class="flex flex-col items-center justify-center text-primary-fixed-dim bg-white/5 rounded-xl p-2 active:scale-90 duration-200" href="#">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">directions_car</span>
+<span class="font-label-sm text-label-sm">Fleet</span>
+</a>
+<a class="flex flex-col items-center justify-center text-on-surface-variant/60 p-2 hover:text-primary-fixed transition-colors" href="#">
+<span class="material-symbols-outlined">calendar_month</span>
+<span class="font-label-sm text-label-sm">Book</span>
+</a>
+<a class="flex flex-col items-center justify-center text-on-surface-variant/60 p-2 hover:text-primary-fixed transition-colors" href="#">
+<span class="material-symbols-outlined">dashboard</span>
+<span class="font-label-sm text-label-sm">Dashboard</span>
+</a>
+<a class="flex flex-col items-center justify-center text-on-surface-variant/60 p-2 hover:text-primary-fixed transition-colors" href="#">
+<span class="material-symbols-outlined">menu</span>
+<span class="font-label-sm text-label-sm">Menu</span>
+</a>
+</nav>
+<script>
+        // Micro-interactions and effects
+        document.querySelectorAll('.glass-card').forEach(card => {
+            card.addEventListener('mousemove', (e) => {
+                const rect = card.getBoundingClientRect();
+                const x = e.clientX - rect.left;
+                const y = e.clientY - rect.top;
+                
+                // Subtle shine effect mapping to cursor position
+                card.style.setProperty('--x', `${x}px`);
+                card.style.setProperty('--y', `${y}px`);
+            });
+        });
+
+        // Sticky header background transition
+        window.addEventListener('scroll', () => {
+            const header = document.querySelector('header');
+            if (window.scrollY > 20) {
+                header.classList.add('bg-background/95');
+            } else {
+                header.classList.remove('bg-background/95');
+            }
+        });
+    </script>
+</body></html>

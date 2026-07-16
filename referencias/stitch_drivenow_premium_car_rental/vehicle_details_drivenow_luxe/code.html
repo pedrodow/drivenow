@@ -1,0 +1,419 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>DRIVENOW | Vehicle Details</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "on-primary": "#3a3000",
+                        "surface-container-high": "#2a2a2c",
+                        "error-container": "#93000a",
+                        "on-tertiary-fixed-variant": "#47464b",
+                        "on-secondary-fixed": "#1b1b1f",
+                        "inverse-primary": "#705d00",
+                        "surface-tint": "#e9c400",
+                        "on-secondary": "#303034",
+                        "tertiary-fixed": "#e4e1e7",
+                        "inverse-on-surface": "#303032",
+                        "error": "#ffb4ab",
+                        "tertiary": "#f8f5fb",
+                        "outline": "#999077",
+                        "on-surface-variant": "#d0c6ab",
+                        "surface-dim": "#131315",
+                        "outline-variant": "#4d4732",
+                        "on-tertiary": "#303034",
+                        "on-tertiary-container": "#5f5e63",
+                        "on-error-container": "#ffdad6",
+                        "tertiary-fixed-dim": "#c8c5cb",
+                        "on-secondary-container": "#b6b4b9",
+                        "on-surface": "#e5e1e4",
+                        "surface-container-lowest": "#0e0e10",
+                        "surface-container-highest": "#353437",
+                        "secondary": "#c8c5cb",
+                        "primary-container": "#ffd700",
+                        "surface-container": "#201f21",
+                        "on-primary-fixed-variant": "#544600",
+                        "primary": "#fff6df",
+                        "primary-fixed-dim": "#e9c400",
+                        "secondary-container": "#47464b",
+                        "surface-bright": "#39393b",
+                        "tertiary-container": "#dbd9de",
+                        "inverse-surface": "#e5e1e4",
+                        "surface-variant": "#353437",
+                        "on-secondary-fixed-variant": "#47464b",
+                        "on-tertiary-fixed": "#1b1b1f",
+                        "on-background": "#e5e1e4",
+                        "on-primary-fixed": "#221b00",
+                        "on-primary-container": "#705e00",
+                        "surface": "#131315",
+                        "on-error": "#690005",
+                        "primary-fixed": "#ffe16d",
+                        "surface-container-low": "#1b1b1d",
+                        "secondary-fixed": "#e4e1e7",
+                        "secondary-fixed-dim": "#c8c5cb",
+                        "background": "#131315"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "1rem",
+                        "lg": "2rem",
+                        "xl": "3rem",
+                        "full": "9999px"
+                    },
+                    "spacing": {
+                        "stack-sm": "8px",
+                        "margin-desktop": "64px",
+                        "stack-lg": "32px",
+                        "container-max": "1280px",
+                        "stack-md": "16px",
+                        "margin-mobile": "20px",
+                        "gutter": "24px",
+                        "stack-xl": "64px"
+                    },
+                    "fontFamily": {
+                        "display-lg": ["Plus Jakarta Sans"],
+                        "label-sm": ["Plus Jakarta Sans"],
+                        "headline-lg": ["Plus Jakarta Sans"],
+                        "body-md": ["Plus Jakarta Sans"],
+                        "headline-xl": ["Plus Jakarta Sans"],
+                        "display-lg-mobile": ["Plus Jakarta Sans"],
+                        "body-lg": ["Plus Jakarta Sans"],
+                        "label-md": ["Plus Jakarta Sans"]
+                    },
+                    "fontSize": {
+                        "display-lg": ["64px", { "lineHeight": "1.1", "letterSpacing": "-0.04em", "fontWeight": "700" }],
+                        "label-sm": ["12px", { "lineHeight": "1", "letterSpacing": "0.05em", "fontWeight": "600" }],
+                        "headline-lg": ["28px", { "lineHeight": "1.3", "letterSpacing": "-0.01em", "fontWeight": "600" }],
+                        "body-md": ["16px", { "lineHeight": "1.6", "letterSpacing": "0em", "fontWeight": "400" }],
+                        "headline-xl": ["36px", { "lineHeight": "1.2", "letterSpacing": "-0.02em", "fontWeight": "600" }],
+                        "display-lg-mobile": ["40px", { "lineHeight": "1.2", "letterSpacing": "-0.02em", "fontWeight": "700" }],
+                        "body-lg": ["18px", { "lineHeight": "1.6", "letterSpacing": "0em", "fontWeight": "400" }],
+                        "label-md": ["14px", { "lineHeight": "1", "letterSpacing": "0.02em", "fontWeight": "500" }]
+                    }
+                },
+            },
+        }
+    </script>
+<style>
+        .glass-card {
+            background: rgba(255, 255, 255, 0.03);
+            backdrop-filter: blur(16px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+        .golden-glow {
+            box-shadow: 0 0 20px rgba(233, 196, 0, 0.15);
+        }
+        .active-glow {
+            border-color: #e9c400 !important;
+            box-shadow: 0 0 15px rgba(233, 196, 0, 0.2);
+        }
+        body {
+            background-color: #121214;
+            color: #e5e1e4;
+            -webkit-font-smoothing: antialiased;
+        }
+        .no-scrollbar::-webkit-scrollbar { display: none; }
+        .no-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }
+    </style>
+</head>
+<body class="font-body-md text-body-md overflow-x-hidden pb-32">
+<!-- TopAppBar -->
+<header class="fixed top-0 w-full z-50 bg-background/80 backdrop-blur-lg border-b border-white/10 h-20 flex items-center">
+<div class="flex justify-between items-center px-margin-mobile md:px-margin-desktop w-full max-w-container-max mx-auto">
+<div class="flex items-center gap-4">
+<button class="material-symbols-outlined text-primary hover:opacity-80 transition-opacity">menu</button>
+<span class="font-display-lg text-display-lg-mobile tracking-tighter text-primary-fixed-dim">DRIVENOW</span>
+</div>
+<div class="hidden md:flex gap-8 items-center">
+<a class="font-label-md text-label-md text-on-surface-variant hover:text-primary transition-colors" href="#">Fleet</a>
+<a class="font-label-md text-label-md text-on-surface-variant hover:text-primary transition-colors" href="#">Experience</a>
+<a class="font-label-md text-label-md text-on-surface-variant hover:text-primary transition-colors" href="#">Contact</a>
+</div>
+<div class="w-10 h-10 rounded-full bg-surface-container-high border border-white/10 overflow-hidden">
+<img class="w-full h-full object-cover" data-alt="Close up profile portrait of a sophisticated male executive in a dark designer suit, soft cinematic lighting, high-end automotive club aesthetic, dark background." src="https://lh3.googleusercontent.com/aida-public/AB6AXuDAWUZ-sfjJo3wlfOpWHjbFCkAZXsM1n5ZdwUPHZinGl3enOx88F6KMdQkPqGWMiNk4h2PrqsIBe7gXgDTFpPJccleoitDV1q3YZLBI6PrVvvHo4REhzOmwvun-w3Ui9nmRT071sPlSPtUGr-ssnYOmPeIwes_MMx02PnGsWHsBkU32C23WxtgoiNXLLRGkyH-zg4XwkHs7jvEUhnwuDrWoIfp9QT4gaFCwJ_pz7K21-owvtOA0EDaOYg"/>
+</div>
+</div>
+</header>
+<main class="mt-20">
+<!-- Hero Gallery -->
+<section class="relative w-full aspect-[16/9] md:aspect-[21/9] overflow-hidden group">
+<div class="absolute inset-0 z-10 bg-gradient-to-t from-background to-transparent opacity-60"></div>
+<div class="flex transition-transform duration-700 ease-in-out h-full" id="hero-slider">
+<div class="min-w-full h-full">
+<img class="w-full h-full object-cover" src="https://lh3.googleusercontent.com/aida-public/AB6AXuA--QxgDUA5LmjRclyR0GxYEbsua274bjL42eB_j3T3FJ4GUk14b2e1C80LjPt09ObxuPVBpdzVdw_8Kpj6wDZRY2i7CmMRY8K5ZMHTPv96QIV__2h4W3KngVtzfk7C0QwAC5VzEL0z1oeFuoaTFOZqyPW6HGAtNkiywQoRReDr-FohjOSEkEyQFc9EVr2P_UD2U2Cj5qtkcaaJnEUMKI8S1JXcvNHFlwfTUOb667_vRZFtnk-Ic-wcRQ"/>
+</div>
+<div class="min-w-full h-full">
+<img class="w-full h-full object-cover" data-alt="A dramatic interior shot of a luxury sedan cockpit at night, featuring glowing amber ambient lighting, brushed aluminum accents, and a high-resolution wide-screen dashboard display. Graphite black leather textures are sharp and detailed. Cinematic photography, low-key lighting." src="https://lh3.googleusercontent.com/aida-public/AB6AXuDetTMyw6wveoS9jL87lQp-wE0puuASq7Ck6b6Zac5AN6qEN6yX-lbK9YLaY1Ck2xP-MPMouvPtMgMmpuiUy7bt80HqaDs68_Z3EFGhMKRrs9IjGOdXH_glvgiVRfkFaYauYlhu3upd_2P4RCT46gfBrDz2x8Id_3M6YTngdjXoa90LA0UicCgbMtdOjpdC_bH7Xy97veqGj8_C3VtnaBWPSRyqA0Da0GA1sKc7dHALN4SapN-lbu-EqQ"/>
+</div>
+<div class="min-w-full h-full">
+<img class="w-full h-full object-cover" data-alt="A close-up of a high-performance 21-inch alloy wheel with red brake calipers visible through the spokes. The car is finished in a deep obsidian metallic paint reflecting city lights. High contrast, sharp edges, automotive luxury photography style." src="https://lh3.googleusercontent.com/aida-public/AB6AXuAPkcoh1ktWJ3uQC2Yp3wNZD-OnAxrzHp-de5SIYt-fjFzh4o7tpxbwnorEvh14-OPXV8qHKw_pNX0_4q88p1D8e17AGxUkbbzP4zQtaOuo6S3S1p7uaMzIiN0K5zMGK6wh09sN0iFehju5e6rYGIwE9jMTt7Ok8K0c4cYskCN-RaoUANPvsjG0twnjLoRmqkfn0yoVLdn6POLpvhIWRdvdo8H0WblPm7LmcdoOudOFMERFKPhE3tBqPQ"/>
+</div>
+</div>
+<div class="absolute bottom-stack-xl left-margin-mobile md:left-margin-desktop z-20">
+<div class="flex gap-stack-sm mb-stack-md">
+<span class="bg-primary-container text-on-primary-container px-3 py-1 rounded-full font-label-sm text-label-sm">PRESTIGE CLASS</span>
+<span class="bg-white/10 backdrop-blur text-white px-3 py-1 rounded-full font-label-sm text-label-sm">AVAILABLE NOW</span>
+</div>
+<h1 class="font-display-lg text-display-lg-mobile md:text-display-lg text-white mb-2">BMW M5 COMPETITION</h1>
+<p class="font-body-lg text-body-lg text-on-surface-variant max-w-xl">Ultimate executive performance. Redefining the boundaries of power and elegance.</p>
+</div>
+<div class="absolute right-margin-mobile bottom-stack-xl z-20 flex gap-2">
+<button class="w-12 h-12 glass-card rounded-full flex items-center justify-center hover:bg-white/10 transition-all text-white" onclick="prevSlide()">
+<span class="material-symbols-outlined">chevron_left</span>
+</button>
+<button class="w-12 h-12 glass-card rounded-full flex items-center justify-center hover:bg-white/10 transition-all text-white" onclick="nextSlide()">
+<span class="material-symbols-outlined">chevron_right</span>
+</button>
+</div>
+</section>
+<div class="max-w-container-max mx-auto px-margin-mobile md:px-margin-desktop py-stack-xl">
+<div class="grid grid-cols-1 lg:grid-cols-12 gap-stack-xl">
+<!-- Main Details -->
+<div class="lg:col-span-8 space-y-stack-xl">
+<!-- Specs Grid -->
+<section>
+<h2 class="font-headline-lg text-headline-lg mb-stack-lg flex items-center gap-2">
+<span class="w-1 h-8 bg-primary-fixed-dim rounded-full"></span>
+                            Performance &amp; Comfort
+                        </h2>
+<div class="grid grid-cols-2 md:grid-cols-3 gap-gutter">
+<div class="glass-card p-stack-md rounded-lg flex items-start gap-3">
+<span class="material-symbols-outlined text-primary-fixed-dim">groups</span>
+<div>
+<p class="font-label-sm text-label-sm text-on-surface-variant uppercase tracking-wider">Passengers</p>
+<p class="font-headline-lg text-xl text-primary">5 Persons</p>
+</div>
+</div>
+<div class="glass-card p-stack-md rounded-lg flex items-start gap-3">
+<span class="material-symbols-outlined text-primary-fixed-dim">luggage</span>
+<div>
+<p class="font-label-sm text-label-sm text-on-surface-variant uppercase tracking-wider">Luggage</p>
+<p class="font-headline-lg text-xl text-primary">3 Large Bags</p>
+</div>
+</div>
+<div class="glass-card p-stack-md rounded-lg flex items-start gap-3">
+<span class="material-symbols-outlined text-primary-fixed-dim">settings_input_component</span>
+<div>
+<p class="font-label-sm text-label-sm text-on-surface-variant uppercase tracking-wider">Transmission</p>
+<p class="font-headline-lg text-xl text-primary">8-Speed Auto</p>
+</div>
+</div>
+<div class="glass-card p-stack-md rounded-lg flex items-start gap-3">
+<span class="material-symbols-outlined text-primary-fixed-dim">local_gas_station</span>
+<div>
+<p class="font-label-sm text-label-sm text-on-surface-variant uppercase tracking-wider">Fuel Type</p>
+<p class="font-headline-lg text-xl text-primary">Premium Gas</p>
+</div>
+</div>
+<div class="glass-card p-stack-md rounded-lg flex items-start gap-3">
+<span class="material-symbols-outlined text-primary-fixed-dim">ac_unit</span>
+<div>
+<p class="font-label-sm text-label-sm text-on-surface-variant uppercase tracking-wider">Climate</p>
+<p class="font-headline-lg text-xl text-primary">Dual Zone A/C</p>
+</div>
+</div>
+<div class="glass-card p-stack-md rounded-lg flex items-start gap-3">
+<span class="material-symbols-outlined text-primary-fixed-dim">smartphone</span>
+<div>
+<p class="font-label-sm text-label-sm text-on-surface-variant uppercase tracking-wider">Connectivity</p>
+<p class="font-headline-lg text-xl text-primary">Apple CarPlay</p>
+</div>
+</div>
+</div>
+</section>
+<!-- Insurance Selection -->
+<section>
+<h2 class="font-headline-lg text-headline-lg mb-stack-lg flex items-center gap-2">
+<span class="w-1 h-8 bg-primary-fixed-dim rounded-full"></span>
+                            Insurance &amp; Protection
+                        </h2>
+<div class="space-y-stack-md">
+<div class="glass-card p-stack-md rounded-lg cursor-pointer transition-all border-l-4 border-l-transparent active-glow group" onclick="selectInsurance(this)">
+<div class="flex justify-between items-center">
+<div class="flex items-center gap-4">
+<div class="w-12 h-12 rounded-full bg-surface-container-high flex items-center justify-center text-primary-fixed-dim">
+<span class="material-symbols-outlined">shield</span>
+</div>
+<div>
+<p class="font-body-lg font-bold text-white">Standard Protection</p>
+<p class="font-body-md text-on-surface-variant">Includes Basic Collision and Theft Protection</p>
+</div>
+</div>
+<div class="text-right">
+<p class="font-headline-lg text-primary text-xl">Included</p>
+<p class="font-label-sm text-on-surface-variant">$2,500 Excess</p>
+</div>
+</div>
+</div>
+<div class="glass-card p-stack-md rounded-lg cursor-pointer transition-all border-l-4 border-l-transparent hover:border-l-primary-fixed-dim group" onclick="selectInsurance(this)">
+<div class="flex justify-between items-center">
+<div class="flex items-center gap-4">
+<div class="w-12 h-12 rounded-full bg-surface-container-high flex items-center justify-center text-primary-fixed-dim">
+<span class="material-symbols-outlined">verified_user</span>
+</div>
+<div>
+<p class="font-body-lg font-bold text-white">Premium Zero-Risk</p>
+<p class="font-body-md text-on-surface-variant">Full cover, no deductible, glass &amp; tire protection</p>
+</div>
+</div>
+<div class="text-right">
+<p class="font-headline-lg text-primary text-xl">+$45 <span class="text-sm font-normal">/day</span></p>
+<p class="font-label-sm text-on-surface-variant">$0 Excess</p>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- Reviews -->
+<section>
+<div class="flex justify-between items-end mb-stack-lg">
+<h2 class="font-headline-lg text-headline-lg flex items-center gap-2">
+<span class="w-1 h-8 bg-primary-fixed-dim rounded-full"></span>
+                                Client Experiences
+                            </h2>
+<div class="flex items-center gap-1 text-primary-fixed-dim">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">star</span>
+<span class="font-bold">4.9</span>
+<span class="text-on-surface-variant text-sm">(124 reviews)</span>
+</div>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-2 gap-gutter">
+<div class="glass-card p-stack-md rounded-lg">
+<div class="flex items-center gap-3 mb-stack-md">
+<div class="w-10 h-10 rounded-full bg-primary-fixed-dim flex items-center justify-center text-on-primary font-bold">JD</div>
+<div>
+<p class="font-bold text-white">Julian D.</p>
+<div class="flex text-primary-fixed-dim text-xs">
+<span class="material-symbols-outlined text-sm" style="font-variation-settings: 'FILL' 1;">star</span>
+<span class="material-symbols-outlined text-sm" style="font-variation-settings: 'FILL' 1;">star</span>
+<span class="material-symbols-outlined text-sm" style="font-variation-settings: 'FILL' 1;">star</span>
+<span class="material-symbols-outlined text-sm" style="font-variation-settings: 'FILL' 1;">star</span>
+<span class="material-symbols-outlined text-sm" style="font-variation-settings: 'FILL' 1;">star</span>
+</div>
+</div>
+</div>
+<p class="italic text-on-surface-variant text-body-md">"The BMW M5 was delivered in pristine condition. The concierge service was top-notch, and the performance of the vehicle exceeded all expectations."</p>
+</div>
+<div class="glass-card p-stack-md rounded-lg">
+<div class="flex items-center gap-3 mb-stack-md">
+<div class="w-10 h-10 rounded-full bg-secondary-container flex items-center justify-center text-primary font-bold">MK</div>
+<div>
+<p class="font-bold text-white">Marcus K.</p>
+<div class="flex text-primary-fixed-dim text-xs">
+<span class="material-symbols-outlined text-sm" style="font-variation-settings: 'FILL' 1;">star</span>
+<span class="material-symbols-outlined text-sm" style="font-variation-settings: 'FILL' 1;">star</span>
+<span class="material-symbols-outlined text-sm" style="font-variation-settings: 'FILL' 1;">star</span>
+<span class="material-symbols-outlined text-sm" style="font-variation-settings: 'FILL' 1;">star</span>
+<span class="material-symbols-outlined text-sm" style="font-variation-settings: 'FILL' 1;">star</span>
+</div>
+</div>
+</div>
+<p class="italic text-on-surface-variant text-body-md">"Seamless booking experience. This car is a beast on the road. DriveNow is the only way I'll rent from now on for my business trips."</p>
+</div>
+</div>
+</section>
+</div>
+<!-- Price Sidebar (Desktop Only Sticky) -->
+<aside class="hidden lg:block lg:col-span-4">
+<div class="glass-card p-stack-lg rounded-lg sticky top-28 space-y-stack-lg border-primary-fixed-dim/20">
+<div>
+<h3 class="font-headline-lg text-white mb-2">Price Summary</h3>
+<p class="text-on-surface-variant font-body-md">Estimate for 3 days booking</p>
+</div>
+<div class="space-y-stack-md">
+<div class="flex justify-between border-b border-white/10 pb-stack-md">
+<span class="text-on-surface-variant">Daily Rental</span>
+<span class="font-bold text-white">$450.00</span>
+</div>
+<div class="flex justify-between border-b border-white/10 pb-stack-md">
+<span class="text-on-surface-variant">Protection Plan</span>
+<span class="font-bold text-white">$0.00</span>
+</div>
+<div class="flex justify-between border-b border-white/10 pb-stack-md">
+<span class="text-on-surface-variant">Service Fee</span>
+<span class="font-bold text-white">$85.00</span>
+</div>
+<div class="flex justify-between pt-stack-md">
+<span class="font-headline-lg text-white">Total</span>
+<span class="font-display-lg text-primary-fixed-dim text-2xl">$1,435.00</span>
+</div>
+</div>
+<button class="w-full bg-primary-fixed-dim hover:bg-primary-fixed text-on-primary py-4 rounded-lg font-bold transition-all active:scale-95 golden-glow">
+                            CONFIRM RESERVATION
+                        </button>
+<div class="bg-surface-container-low p-4 rounded-lg flex items-center gap-3">
+<span class="material-symbols-outlined text-primary-fixed-dim">verified</span>
+<p class="text-sm text-on-surface-variant">Best Price Guarantee. No hidden cancellation fees.</p>
+</div>
+</div>
+</aside>
+</div>
+</div>
+</main>
+<!-- Footer -->
+<footer class="w-full py-stack-xl flex flex-col items-center gap-stack-lg px-margin-mobile w-full bg-surface-container-lowest border-t border-white/5 mt-stack-xl">
+<div class="font-display-lg text-display-lg text-primary tracking-tighter">DRIVENOW</div>
+<div class="flex flex-wrap justify-center gap-gutter text-on-surface-variant font-label-md">
+<a class="hover:text-primary-fixed transition-colors" href="#">Privacy</a>
+<a class="hover:text-primary-fixed transition-colors" href="#">Terms</a>
+<a class="hover:text-primary-fixed transition-colors" href="#">Contact</a>
+<a class="hover:text-primary-fixed transition-colors" href="#">Fleet</a>
+</div>
+<p class="font-body-md text-on-surface-variant/40 text-center uppercase tracking-widest text-xs">
+            © 2024 DRIVENOW PRESTIGE. ALL RIGHTS RESERVED.
+        </p>
+</footer>
+<!-- Bottom Mobile CTA -->
+<div class="lg:hidden fixed bottom-0 left-0 w-full z-[60] glass-card border-t border-white/10 px-margin-mobile py-4 flex items-center justify-between gap-4">
+<div>
+<p class="text-xs text-on-surface-variant uppercase font-bold tracking-wider">Total Est.</p>
+<p class="font-display-lg text-primary-fixed-dim text-xl">$1,435.00</p>
+</div>
+<button class="flex-1 bg-primary-fixed-dim text-on-primary font-bold py-4 rounded-lg active:scale-95 transition-all shadow-xl shadow-primary-container/20">
+            RESERVE NOW
+        </button>
+</div>
+<!-- Bottom Nav Bar (Top Destinations only) - Hidden on this detail page as per rules -->
+<script>
+        let currentSlide = 0;
+        const totalSlides = 3;
+        const slider = document.getElementById('hero-slider');
+
+        function updateSlider() {
+            slider.style.transform = `translateX(-${currentSlide * 100}%)`;
+        }
+
+        function nextSlide() {
+            currentSlide = (currentSlide + 1) % totalSlides;
+            updateSlider();
+        }
+
+        function prevSlide() {
+            currentSlide = (currentSlide - 1 + totalSlides) % totalSlides;
+            updateSlider();
+        }
+
+        function selectInsurance(element) {
+            // Remove active class from all
+            document.querySelectorAll('[onclick="selectInsurance(this)"]').forEach(el => {
+                el.classList.remove('active-glow');
+                el.classList.add('border-l-transparent');
+            });
+            // Add to selected
+            element.classList.add('active-glow');
+            element.classList.remove('border-l-transparent');
+            element.classList.add('border-l-primary-fixed-dim');
+        }
+
+        // Auto-slide occasionally
+        setInterval(nextSlide, 8000);
+    </script>
+</body></html>

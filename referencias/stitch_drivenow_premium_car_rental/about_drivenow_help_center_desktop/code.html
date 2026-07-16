@@ -1,0 +1,357 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>About &amp; Help Center | DRIVENOW</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            "colors": {
+                    "primary": "#fff6df",
+                    "surface-container-low": "#1b1b1d",
+                    "primary-container": "#ffd700",
+                    "inverse-surface": "#e5e1e4",
+                    "surface-dim": "#131315",
+                    "on-secondary-fixed-variant": "#47464b",
+                    "outline-variant": "#4d4732",
+                    "on-error-container": "#ffdad6",
+                    "background": "#131315",
+                    "on-surface": "#e5e1e4",
+                    "tertiary-fixed-dim": "#c8c5cb",
+                    "tertiary-container": "#dbd9de",
+                    "on-surface-variant": "#d0c6ab",
+                    "on-primary-container": "#705e00",
+                    "on-tertiary-fixed-variant": "#47464b",
+                    "on-secondary-fixed": "#1b1b1f",
+                    "tertiary-fixed": "#e4e1e7",
+                    "secondary-fixed-dim": "#c8c5cb",
+                    "secondary-fixed": "#e4e1e7",
+                    "inverse-primary": "#705d00",
+                    "secondary": "#c8c5cb",
+                    "on-tertiary-fixed": "#1b1b1f",
+                    "surface-variant": "#353437",
+                    "on-background": "#e5e1e4",
+                    "inverse-on-surface": "#303032",
+                    "on-tertiary-container": "#5f5e63",
+                    "surface": "#131315",
+                    "on-secondary": "#303034",
+                    "error-container": "#93000a",
+                    "tertiary": "#f8f5fb",
+                    "surface-bright": "#39393b",
+                    "secondary-container": "#47464b",
+                    "surface-container-highest": "#353437",
+                    "primary-fixed-dim": "#e9c400",
+                    "surface-container": "#201f21",
+                    "on-primary-fixed": "#221b00",
+                    "outline": "#999077",
+                    "on-primary-fixed-variant": "#544600",
+                    "error": "#ffb4ab",
+                    "surface-container-high": "#2a2a2c",
+                    "on-error": "#690005",
+                    "surface-tint": "#e9c400",
+                    "on-tertiary": "#303034",
+                    "on-secondary-container": "#b6b4b9",
+                    "surface-container-lowest": "#0e0e10",
+                    "on-primary": "#3a3000",
+                    "primary-fixed": "#ffe16d"
+            },
+            "borderRadius": {
+                    "DEFAULT": "1rem",
+                    "lg": "2rem",
+                    "xl": "3rem",
+                    "full": "9999px"
+            },
+            "spacing": {
+                    "stack-md": "16px",
+                    "gutter": "24px",
+                    "container-max": "1280px",
+                    "margin-mobile": "20px",
+                    "margin-desktop": "64px",
+                    "stack-xl": "64px",
+                    "stack-sm": "8px",
+                    "stack-lg": "32px"
+            },
+            "fontFamily": {
+                    "label-sm": ["Plus Jakarta Sans"],
+                    "headline-lg": ["Plus Jakarta Sans"],
+                    "headline-xl": ["Plus Jakarta Sans"],
+                    "body-lg": ["Plus Jakarta Sans"],
+                    "display-lg-mobile": ["Plus Jakarta Sans"],
+                    "display-lg": ["Plus Jakarta Sans"],
+                    "body-md": ["Plus Jakarta Sans"],
+                    "label-md": ["Plus Jakarta Sans"]
+            },
+            "fontSize": {
+                    "label-sm": ["12px", {"lineHeight": "1", "letterSpacing": "0.05em", "fontWeight": "600"}],
+                    "headline-lg": ["28px", {"lineHeight": "1.3", "letterSpacing": "-0.01em", "fontWeight": "600"}],
+                    "headline-xl": ["36px", {"lineHeight": "1.2", "letterSpacing": "-0.02em", "fontWeight": "600"}],
+                    "body-lg": ["18px", {"lineHeight": "1.6", "letterSpacing": "0em", "fontWeight": "400"}],
+                    "display-lg-mobile": ["40px", {"lineHeight": "1.2", "letterSpacing": "-0.02em", "fontWeight": "700"}],
+                    "display-lg": ["64px", {"lineHeight": "1.1", "letterSpacing": "-0.04em", "fontWeight": "700"}],
+                    "body-md": ["16px", {"lineHeight": "1.6", "letterSpacing": "0em", "fontWeight": "400"}],
+                    "label-md": ["14px", {"lineHeight": "1", "letterSpacing": "0.02em", "fontWeight": "500"}]
+            }
+          },
+        },
+      }
+    </script>
+<style>
+        body {
+            background-color: #131315;
+            color: #e5e1e4;
+            font-family: 'Plus Jakarta Sans', sans-serif;
+            overflow-x: hidden;
+        }
+        .glass-card {
+            background: rgba(255, 255, 255, 0.03);
+            backdrop-filter: blur(16px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+        .golden-glow:hover {
+            box-shadow: 0 0 20px rgba(233, 196, 0, 0.15);
+        }
+        .custom-transition {
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        details > summary::-webkit-details-marker {
+            display: none;
+        }
+    </style>
+</head>
+<body class="bg-background text-on-background">
+<!-- TopAppBar -->
+<header class="bg-background/80 backdrop-blur-lg dark:bg-background/80 fixed top-0 w-full z-50 border-b border-white/10">
+<nav class="flex justify-between items-center px-margin-mobile md:px-margin-desktop h-20 w-full max-w-container-max mx-auto">
+<div class="flex items-center gap-4">
+<span class="material-symbols-outlined text-primary dark:text-primary cursor-pointer hover:opacity-80 transition-opacity">menu</span>
+<h1 class="font-display-lg text-display-lg-mobile tracking-tighter text-primary-fixed-dim dark:text-primary-fixed-dim">DRIVENOW</h1>
+</div>
+<div class="hidden md:flex gap-8 items-center">
+<a class="font-label-md text-label-md text-on-surface-variant hover:text-primary-fixed transition-colors" href="#">Home</a>
+<a class="font-label-md text-label-md text-on-surface-variant hover:text-primary-fixed transition-colors" href="#">Fleet</a>
+<a class="font-label-md text-label-md text-on-surface-variant hover:text-primary-fixed transition-colors" href="#">Book</a>
+<a class="font-label-md text-label-md text-primary font-bold" href="#">About</a>
+</div>
+<div class="flex items-center gap-4">
+<div class="w-10 h-10 rounded-full bg-surface-container-high flex items-center justify-center overflow-hidden border border-white/10">
+<img class="w-full h-full object-cover" data-alt="Close up portrait of a professional executive user with a clean, high-end corporate aesthetic, set against a blurred luxury automotive interior. The lighting is dramatic and premium, highlighting refined features and a sophisticated demeanor." src="https://lh3.googleusercontent.com/aida-public/AB6AXuApOFZGLGvvNszlgV742jNDlB2OA3LpkQtCbCs3nZmIlYDgihMy2khFjZLZ8IOxY8mnTrWEHuJRintGHL_WnnGJCHKz17iewT_268160hWH7lu3QIYTsoxSmDlx_-aQQzykSDqgX0_USYndCiV-KYutK1A4n0DSXaIqnVlHMFaZ_iLx_vFSBRx0R6Kz3HJxSuX_IemU8BmR2Cl-S_2oMz7glTGXIOIgvW7m2IHpx6Xi7oVEnllm7yc55Q"/>
+</div>
+</div>
+</nav>
+</header>
+<main class="pt-20">
+<!-- Hero Section -->
+<section class="relative w-full h-[70vh] flex items-center justify-center overflow-hidden">
+<div class="absolute inset-0 z-0">
+<img class="w-full h-full object-cover brightness-[0.4]" data-alt="A cinematic, low-angle shot of a grey Mercedes G-Wagon parked in a modern, luxury architectural driveway at twilight. The scene is illuminated by warm interior lights from a glass-walled villa and integrated ground LEDs. The atmosphere is quiet, exclusive, and high-performance, with a deep indigo night sky." src="https://lh3.googleusercontent.com/aida-public/AB6AXuDXdFAN-6vgeOgZPvIvm8qL1MI7iQVuAIRZ2IMpZydKD27YO3yqo28soRFh1jWrTWgME-APJec8CJLEVGS1jpasODHBsM5UXGDB5lbXp-jhugDjvhPy9qYcpLP3ax0FeIXfmM0i4SYnBOcixQIGKEy26oAGYAIRVe8DRHNg9vmHRUHfUwK76NOj2dunYVpIYHE58pX6pnwf8S-SEtVn_cvM5MgarIWFxJK9XnzO_EGjWqhwxXDbmxcMmA"/>
+</div>
+<div class="relative z-10 text-center max-w-3xl px-margin-mobile">
+<h2 class="font-display-lg text-display-lg text-primary mb-stack-md">Redefining Prestige.</h2>
+<p class="font-body-lg text-body-lg text-on-surface-variant mb-stack-lg">Drivenow is more than a car rental service; it's a curated experience designed for those who demand excellence in every mile of their journey.</p>
+<div class="flex gap-gutter justify-center">
+<button class="bg-primary-fixed-dim text-on-primary-fixed px-10 py-4 rounded-DEFAULT font-label-md text-label-md golden-glow custom-transition active:scale-95">Explore Fleet</button>
+<button class="glass-card text-primary px-10 py-4 rounded-DEFAULT font-label-md text-label-md custom-transition hover:bg-white/5 active:scale-95">Our Story</button>
+</div>
+</div>
+</section>
+<!-- Brand Story Bento Grid -->
+<section class="max-w-container-max mx-auto px-margin-mobile md:px-margin-desktop py-stack-xl">
+<div class="grid grid-cols-1 md:grid-cols-3 gap-gutter">
+<div class="md:col-span-2 glass-card p-stack-lg rounded-lg flex flex-col justify-end min-h-[400px] relative overflow-hidden group">
+<div class="absolute inset-0 opacity-20 group-hover:opacity-30 transition-opacity">
+<img class="w-full h-full object-cover" data-alt="Abstract close-up of a high-performance carbon fiber car chassis and engine components, emphasizing precision engineering and luxury materials. The lighting is sharp, creating deep shadows and bright highlights on the metallic surfaces in a dark graphite color palette." src="https://lh3.googleusercontent.com/aida-public/AB6AXuCmxssqa5Inar7mvqYkqlq3Ul7RYMsN6TWrE1_HbfZ1EsDVG3z0W3J-2V4FsXi6i8sLXvRGlaFJ6qPjK0SNdM3iHrWBevoaPw30AM9yStEMZK7OQUWbf_iIrbKaa4kyB10daZgU8oqTvcy7wh6cSncmCDWEkUxf5YWfa3jVU2cAks7wXt7W836h1nW2HI9qXPdh2A-H4ptGFi7b0efbL261XaipV-qTF2HAblrvIf4CG3gMnZY6fJWChA"/>
+</div>
+<div class="relative z-10">
+<span class="text-primary-fixed-dim font-label-sm text-label-sm uppercase tracking-widest mb-2 block">Our Heritage</span>
+<h3 class="font-headline-xl text-headline-xl text-primary mb-stack-md">Engineered Excellence</h3>
+<p class="font-body-md text-body-md text-on-surface-variant max-w-xl">Founded by automotive enthusiasts, Drivenow bridges the gap between digital convenience and the raw, mechanical thrill of driving the world's most elite vehicles.</p>
+</div>
+</div>
+<div class="glass-card p-stack-lg rounded-lg flex flex-col justify-between">
+<div class="w-12 h-12 rounded-full bg-primary-fixed-dim/20 flex items-center justify-center">
+<span class="material-symbols-outlined text-primary-fixed-dim">verified</span>
+</div>
+<div>
+<h4 class="font-headline-lg text-headline-lg text-primary mb-2">Curated Selection</h4>
+<p class="font-body-md text-body-md text-on-surface-variant">Every vehicle in our fleet is hand-selected and meticulously maintained to ensure peak performance.</p>
+</div>
+</div>
+</div>
+</section>
+<!-- FAQ Section -->
+<section class="bg-surface-container-lowest py-stack-xl">
+<div class="max-w-container-max mx-auto px-margin-mobile md:px-margin-desktop">
+<div class="text-center mb-stack-xl">
+<h2 class="font-display-lg text-display-lg-mobile md:text-display-lg text-primary">Help Center</h2>
+<p class="font-body-md text-body-md text-on-surface-variant mt-4">Frequently asked questions about the Drivenow experience.</p>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-2 gap-x-gutter gap-y-stack-md">
+<!-- Column 1 -->
+<div class="space-y-stack-md">
+<details class="glass-card rounded-lg overflow-hidden group">
+<summary class="flex items-center justify-between p-6 cursor-pointer list-none">
+<span class="font-label-md text-label-md text-primary">How does the booking process work?</span>
+<span class="material-symbols-outlined text-primary-fixed-dim group-open:rotate-180 transition-transform">expand_more</span>
+</summary>
+<div class="p-6 pt-0 font-body-md text-body-md text-on-surface-variant border-t border-white/5">
+                                Select your vehicle, choose your dates, and complete the digital verification. Our concierge team will handle the rest, including white-glove delivery to your location.
+                            </div>
+</details>
+<details class="glass-card rounded-lg overflow-hidden group">
+<summary class="flex items-center justify-between p-6 cursor-pointer list-none">
+<span class="font-label-md text-label-md text-primary">What are the insurance requirements?</span>
+<span class="material-symbols-outlined text-primary-fixed-dim group-open:rotate-180 transition-transform">expand_more</span>
+</summary>
+<div class="p-6 pt-0 font-body-md text-body-md text-on-surface-variant border-t border-white/5">
+                                All rentals include comprehensive coverage, though we require a valid driver's license and a security deposit. Additional premium protection plans are available during checkout.
+                            </div>
+</details>
+<details class="glass-card rounded-lg overflow-hidden group">
+<summary class="flex items-center justify-between p-6 cursor-pointer list-none">
+<span class="font-label-md text-label-md text-primary">Can I extend my rental period?</span>
+<span class="material-symbols-outlined text-primary-fixed-dim group-open:rotate-180 transition-transform">expand_more</span>
+</summary>
+<div class="p-6 pt-0 font-body-md text-body-md text-on-surface-variant border-t border-white/5">
+                                Yes, extensions are subject to availability. Please contact your dedicated concierge via the app at least 4 hours prior to your scheduled return time.
+                            </div>
+</details>
+</div>
+<!-- Column 2 -->
+<div class="space-y-stack-md">
+<details class="glass-card rounded-lg overflow-hidden group">
+<summary class="flex items-center justify-between p-6 cursor-pointer list-none">
+<span class="font-label-md text-label-md text-primary">Are there mileage limits?</span>
+<span class="material-symbols-outlined text-primary-fixed-dim group-open:rotate-180 transition-transform">expand_more</span>
+</summary>
+<div class="p-6 pt-0 font-body-md text-body-md text-on-surface-variant border-t border-white/5">
+                                We offer 150 complimentary miles per day. Excess mileage is billed at a flat rate per mile depending on the specific vehicle tier.
+                            </div>
+</details>
+<details class="glass-card rounded-lg overflow-hidden group">
+<summary class="flex items-center justify-between p-6 cursor-pointer list-none">
+<span class="font-label-md text-label-md text-primary">Do you offer airport delivery?</span>
+<span class="material-symbols-outlined text-primary-fixed-dim group-open:rotate-180 transition-transform">expand_more</span>
+</summary>
+<div class="p-6 pt-0 font-body-md text-body-md text-on-surface-variant border-t border-white/5">
+                                Absolutely. We provide terminal-side delivery and pickup at major international airports within our service areas for a seamless transition.
+                            </div>
+</details>
+<details class="glass-card rounded-lg overflow-hidden group">
+<summary class="flex items-center justify-between p-6 cursor-pointer list-none">
+<span class="font-label-md text-label-md text-primary">Is there a minimum age requirement?</span>
+<span class="material-symbols-outlined text-primary-fixed-dim group-open:rotate-180 transition-transform">expand_more</span>
+</summary>
+<div class="p-6 pt-0 font-body-md text-body-md text-on-surface-variant border-t border-white/5">
+                                Renters must be at least 25 years old. For select ultra-prestige vehicles, the minimum age may be 30 years old with additional verification.
+                            </div>
+</details>
+</div>
+</div>
+</div>
+</section>
+<!-- Contact & Location Grid -->
+<section class="max-w-container-max mx-auto px-margin-mobile md:px-margin-desktop py-stack-xl">
+<div class="grid grid-cols-1 lg:grid-cols-2 gap-stack-xl">
+<!-- Contact Form -->
+<div>
+<h3 class="font-headline-xl text-headline-xl text-primary mb-4">Connect With Us</h3>
+<p class="font-body-md text-body-md text-on-surface-variant mb-stack-lg">Inquiries about fleet availability or bespoke arrangements? Our team is available 24/7.</p>
+<form class="space-y-4">
+<div class="grid grid-cols-2 gap-4">
+<input class="w-full bg-surface-container rounded-DEFAULT border-white/10 focus:border-primary-fixed-dim focus:ring-0 text-on-surface p-4 transition-all" placeholder="First Name" type="text"/>
+<input class="w-full bg-surface-container rounded-DEFAULT border-white/10 focus:border-primary-fixed-dim focus:ring-0 text-on-surface p-4 transition-all" placeholder="Last Name" type="text"/>
+</div>
+<input class="w-full bg-surface-container rounded-DEFAULT border-white/10 focus:border-primary-fixed-dim focus:ring-0 text-on-surface p-4 transition-all" placeholder="Email Address" type="email"/>
+<select class="w-full bg-surface-container rounded-DEFAULT border-white/10 focus:border-primary-fixed-dim focus:ring-0 text-on-surface p-4 transition-all">
+<option>Inquiry Type</option>
+<option>Fleet Question</option>
+<option>Corporate Partnership</option>
+<option>Bespoke Request</option>
+</select>
+<textarea class="w-full bg-surface-container rounded-DEFAULT border-white/10 focus:border-primary-fixed-dim focus:ring-0 text-on-surface p-4 transition-all" placeholder="Your Message" rows="4"></textarea>
+<button class="w-full bg-primary-fixed-dim text-on-primary-fixed py-4 rounded-DEFAULT font-label-md text-label-md golden-glow custom-transition" type="submit">Send Message</button>
+</form>
+</div>
+<!-- Location Details -->
+<div class="space-y-stack-lg">
+<div class="glass-card p-6 rounded-lg">
+<h4 class="font-label-md text-label-md text-primary-fixed-dim mb-4 uppercase tracking-widest">Global Headquarters</h4>
+<div class="flex items-start gap-4 mb-4">
+<span class="material-symbols-outlined text-primary mt-1">location_on</span>
+<p class="font-body-md text-body-md text-on-surface-variant">100 Luxury Drive, Century City<br/>Los Angeles, CA 90067</p>
+</div>
+<div class="flex items-center gap-4 mb-4">
+<span class="material-symbols-outlined text-primary">call</span>
+<p class="font-body-md text-body-md text-on-surface-variant">+1 (800) DRIVE-NOW</p>
+</div>
+<div class="flex items-center gap-4">
+<span class="material-symbols-outlined text-primary">mail</span>
+<p class="font-body-md text-body-md text-on-surface-variant">concierge@drivenowprestige.com</p>
+</div>
+</div>
+<div class="w-full h-80 rounded-lg overflow-hidden glass-card">
+<img class="w-full h-full object-cover" data-alt="A stylized, dark-themed satellite map of the Los Angeles area, specifically highlighting Century City with gold-tinted pins and subtle neon glow around the central business district. The map features high contrast, graphite and primary-fixed-dim colors consistent with a premium UI." data-location="Los Angeles" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBws4FA6uwETEG6moZe1lUpn7MDHAb73wOx_5yHlRYvZSdWSmDKhnFYspGMaRJlo6ELKhOU-J7EB69eSjGeXrfc2bnq32HYPW01qtckqF2AUzJn1xIbljUHgHxZdJcSuGjrQ7oim4GFVp1pxNjSI2t2HabnC2UUMQbF8xluKF71RP0g-koOIFoxm2RFi5s51e9uP8Mq-lrbOzbdBzubr3ny-sdl_O_d1MVG1ieWK5707-ct_c7SFceVyQ"/>
+</div>
+</div>
+</div>
+</section>
+</main>
+<!-- Footer -->
+<footer class="bg-surface-container-lowest dark:bg-surface-container-lowest w-full py-stack-xl border-t border-white/5">
+<div class="flex flex-col items-center gap-stack-lg px-margin-mobile w-full">
+<h2 class="font-display-lg text-display-lg text-primary">DRIVENOW</h2>
+<div class="flex gap-stack-lg font-body-md text-body-md">
+<a class="text-on-surface-variant hover:text-primary-fixed transition-colors" href="#">Privacy</a>
+<a class="text-on-surface-variant hover:text-primary-fixed transition-colors" href="#">Terms</a>
+<a class="text-on-surface-variant hover:text-primary-fixed transition-colors" href="#">Contact</a>
+<a class="text-primary font-bold" href="#">Fleet</a>
+</div>
+<p class="font-label-sm text-label-sm text-on-surface-variant/40 tracking-widest">© 2024 DRIVENOW PRESTIGE. ALL RIGHTS RESERVED.</p>
+</div>
+</footer>
+<!-- BottomNavBar (Visible on Mobile) -->
+<nav class="md:hidden fixed bottom-0 left-0 w-full z-50 bg-surface-container/90 backdrop-blur-xl dark:bg-surface-container/90 flex justify-around items-center px-4 py-3 pb-safe border-t border-white/10 shadow-[0_-4px_24px_rgba(233,196,0,0.1)]">
+<div class="flex flex-col items-center justify-center text-on-surface-variant/60 p-2">
+<span class="material-symbols-outlined">home</span>
+<span class="font-label-sm text-label-sm">Home</span>
+</div>
+<div class="flex flex-col items-center justify-center text-on-surface-variant/60 p-2">
+<span class="material-symbols-outlined">directions_car</span>
+<span class="font-label-sm text-label-sm">Fleet</span>
+</div>
+<div class="flex flex-col items-center justify-center text-on-surface-variant/60 p-2">
+<span class="material-symbols-outlined">calendar_month</span>
+<span class="font-label-sm text-label-sm">Book</span>
+</div>
+<div class="flex flex-col items-center justify-center text-on-surface-variant/60 p-2">
+<span class="material-symbols-outlined">dashboard</span>
+<span class="font-label-sm text-label-sm">Dashboard</span>
+</div>
+<div class="flex flex-col items-center justify-center text-primary-fixed-dim bg-white/5 rounded-xl p-2">
+<span class="material-symbols-outlined">menu</span>
+<span class="font-label-sm text-label-sm">Menu</span>
+</div>
+</nav>
+<script>
+        // Micro-interactions for form inputs
+        const inputs = document.querySelectorAll('input, select, textarea');
+        inputs.forEach(input => {
+            input.addEventListener('focus', () => {
+                input.parentElement.style.boxShadow = '0 0 15px rgba(233, 196, 0, 0.05)';
+            });
+            input.addEventListener('blur', () => {
+                input.parentElement.style.boxShadow = 'none';
+            });
+        });
+    </script>
+</body></html>
