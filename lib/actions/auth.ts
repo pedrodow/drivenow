@@ -4,6 +4,7 @@ import bcrypt from "bcryptjs";
 import { redirect } from "next/navigation";
 
 import { prisma } from "@/lib/db";
+import { safeRedirectPath } from "@/lib/auth/redirect";
 import { createSession, destroySession } from "@/lib/auth/session";
 import { loginSchema, registerSchema } from "@/lib/validation/auth-schema";
 
@@ -17,7 +18,10 @@ export async function registerAction(values: unknown): Promise<ActionResult> {
     return { error: "Dados inválidos." };
   }
 
-  const { name, email, password } = parsed.data;
+  const { name, password } = parsed.data;
+  // E-mail é único e comparado exatamente: normalizar evita "Ana@x.com" e
+  // "ana@x.com" virarem duas contas.
+  const email = parsed.data.email.trim().toLowerCase();
 
   const existing = await prisma.user.findUnique({ where: { email } });
   if (existing) {
@@ -33,13 +37,17 @@ export async function registerAction(values: unknown): Promise<ActionResult> {
   redirect("/minha-drivenow");
 }
 
-export async function loginAction(values: unknown): Promise<ActionResult> {
+export async function loginAction(
+  values: unknown,
+  redirectTo?: string
+): Promise<ActionResult> {
   const parsed = loginSchema.safeParse(values);
   if (!parsed.success) {
     return { error: "Dados inválidos." };
   }
 
-  const { email, password } = parsed.data;
+  const { password } = parsed.data;
+  const email = parsed.data.email.trim().toLowerCase();
 
   const user = await prisma.user.findUnique({ where: { email } });
   const passwordMatches = user
@@ -51,7 +59,7 @@ export async function loginAction(values: unknown): Promise<ActionResult> {
   }
 
   await createSession(user.id);
-  redirect("/minha-drivenow");
+  redirect(safeRedirectPath(redirectTo));
 }
 
 export async function logoutAction() {

@@ -1,5 +1,6 @@
 import { randomBytes } from "node:crypto";
 import { cookies } from "next/headers";
+import { cache } from "react";
 
 import { prisma } from "@/lib/db";
 import { SESSION_COOKIE } from "@/lib/auth/constants";
@@ -24,7 +25,9 @@ export async function createSession(userId: string) {
   });
 }
 
-export async function getSession() {
+// `cache` deduplica a consulta dentro de uma mesma requisição (layout + page
+// chamam getSession sem ir duas vezes ao banco).
+export const getSession = cache(async () => {
   const cookieStore = await cookies();
   const token = cookieStore.get(SESSION_COOKIE)?.value;
   if (!token) return null;
@@ -42,7 +45,7 @@ export async function getSession() {
   }
 
   return session;
-}
+});
 
 export async function destroySession() {
   const cookieStore = await cookies();

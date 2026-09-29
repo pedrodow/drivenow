@@ -46,7 +46,10 @@ export function Navbar() {
           ))}
         </div>
 
-        <div className="hidden md:block">
+        <div className="hidden items-center gap-3 md:flex">
+          <Button render={<Link href="/entrar" />} nativeButton={false} variant="ghost">
+            Entrar
+          </Button>
           <Button render={<Link href="/#buscar" />} nativeButton={false} className="golden-glow">
             Reservar agora
           </Button>
@@ -82,6 +85,13 @@ export function Navbar() {
                   {link.label}
                 </SheetClose>
               ))}
+              <SheetClose
+                render={<Link href="/entrar" />}
+                nativeButton={false}
+                className="rounded-md px-2 py-3 text-body-md text-ink-muted transition-colors hover:bg-white/5 hover:text-ink"
+              >
+                Entrar
+              </SheetClose>
             </div>
             <div className="mt-auto p-4">
               <SheetClose
