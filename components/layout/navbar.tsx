@@ -1,9 +1,11 @@
 "use client";
 
 import Link from "next/link";
-import { Menu } from "lucide-react";
+import { LogOut, Menu, User } from "lucide-react";
 
 import { Button } from "@/components/ui/button";
+import { logoutAction } from "@/lib/actions/auth";
+import { useSessionUser } from "@/hooks/use-session-user";
 import {
   Sheet,
   SheetContent,
@@ -20,7 +22,13 @@ const NAV_LINKS = [
   { href: "/#faq", label: "FAQ" },
 ];
 
+function firstName(fullName: string) {
+  return fullName.split(" ")[0];
+}
+
 export function Navbar() {
+  const { user, clear } = useSessionUser();
+
   return (
     <header className="fixed inset-x-0 top-0 z-50 border-b border-white/10 bg-graphite-900/80 backdrop-blur-lg">
       <nav
@@ -47,9 +55,31 @@ export function Navbar() {
         </div>
 
         <div className="hidden items-center gap-3 md:flex">
-          <Button render={<Link href="/entrar" />} nativeButton={false} variant="ghost">
-            Entrar
-          </Button>
+          {user === "loading" ? (
+            // Reserva o espaço enquanto a sessão é consultada (evita o layout pular).
+            <span aria-hidden="true" className="inline-block h-8 w-20" />
+          ) : user ? (
+            <>
+              <Button
+                render={<Link href="/minha-drivenow" />}
+                nativeButton={false}
+                variant="ghost"
+                aria-label={`Meu perfil (${user.name})`}
+              >
+                <User aria-hidden="true" />
+                {firstName(user.name)}
+              </Button>
+              <form action={logoutAction} onSubmit={clear}>
+                <Button type="submit" variant="ghost" size="icon" aria-label="Sair da conta">
+                  <LogOut aria-hidden="true" />
+                </Button>
+              </form>
+            </>
+          ) : (
+            <Button render={<Link href="/entrar" />} nativeButton={false} variant="ghost">
+              Entrar
+            </Button>
+          )}
           <Button render={<Link href="/#buscar" />} nativeButton={false} className="golden-glow">
             Reservar agora
           </Button>
@@ -85,13 +115,35 @@ export function Navbar() {
                   {link.label}
                 </SheetClose>
               ))}
-              <SheetClose
-                render={<Link href="/entrar" />}
-                nativeButton={false}
-                className="rounded-md px-2 py-3 text-body-md text-ink-muted transition-colors hover:bg-white/5 hover:text-ink"
-              >
-                Entrar
-              </SheetClose>
+              {user === "loading" ? null : user ? (
+                <>
+                  <SheetClose
+                    render={<Link href="/minha-drivenow" />}
+                    nativeButton={false}
+                    className="flex items-center gap-2 rounded-md px-2 py-3 text-body-md text-ink-muted transition-colors hover:bg-white/5 hover:text-ink"
+                  >
+                    <User className="h-4 w-4" aria-hidden="true" />
+                    Meu perfil ({firstName(user.name)})
+                  </SheetClose>
+                  <form action={logoutAction} onSubmit={clear}>
+                    <button
+                      type="submit"
+                      className="flex w-full items-center gap-2 rounded-md px-2 py-3 text-left text-body-md text-ink-muted transition-colors hover:bg-white/5 hover:text-ink"
+                    >
+                      <LogOut className="h-4 w-4" aria-hidden="true" />
+                      Sair
+                    </button>
+                  </form>
+                </>
+              ) : (
+                <SheetClose
+                  render={<Link href="/entrar" />}
+                  nativeButton={false}
+                  className="rounded-md px-2 py-3 text-body-md text-ink-muted transition-colors hover:bg-white/5 hover:text-ink"
+                >
+                  Entrar
+                </SheetClose>
+              )}
             </div>
             <div className="mt-auto p-4">
               <SheetClose

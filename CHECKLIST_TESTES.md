@@ -55,6 +55,8 @@ decidimos o que mudar antes de subir.
 
 - [ ] `/entrar` com senha errada → "E-mail ou senha incorretos" (a mesma mensagem para e-mail inexistente)
 - [ ] Login correto leva a `/minha-drivenow` com "Olá, <primeiro nome>!" e o e-mail
+- [ ] Logado, o menu troca "Entrar" por **seu primeiro nome** (leva ao perfil) + ícone de sair — no desktop e no menu do celular
+- [ ] Ao logar/cadastrar, o menu já muda sozinho (sem precisar recarregar); ao clicar no ícone de sair, volta a mostrar "Entrar"
 - [ ] Botão "Sair" volta para a home e encerra a sessão
 - [ ] Depois de sair, abrir `/minha-drivenow` manualmente redireciona para `/entrar`
 - [ ] Logado, abrir `/entrar` ou `/cadastro` manda direto para `/minha-drivenow`
