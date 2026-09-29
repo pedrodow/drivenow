@@ -35,9 +35,14 @@ para que qualquer sessão nova (em qualquer computador) consiga se situar rápid
 1. ✅ Correções: `postinstall: prisma generate` (o client gerado não é versionado),
    `dotenv` declarado, `.env.example`, `.gitignore` das cópias de skills.
 2. ✅ Telas de login/cadastro e área logada mínima.
-3. ⏳ Banco remoto: **Turso** (SQLite hospedado). SQLite em arquivo não funciona na
-   Vercel (disco somente leitura/efêmero). Falta: `authToken` em `lib/db.ts` e aplicar
-   o SQL de `prisma/migrations/` no Turso (o `prisma migrate` não fala com libsql).
+3. 🚧 Banco remoto: **Turso** (SQLite hospedado). SQLite em arquivo não funciona na
+   Vercel (disco somente leitura/efêmero).
+   - ✅ `lib/db.ts` aceita `DATABASE_AUTH_TOKEN`; `npm run db:migrate`
+     (`scripts/apply-migrations.mjs`) aplica o SQL de `prisma/migrations/` em qualquer
+     banco libsql, de forma idempotente (o `prisma migrate` não fala com libsql).
+   - ⏳ Criar o banco no Turso (site), colocar URL + token no `.env` e rodar `npm run db:migrate`.
+   - Sempre que criar uma migration nova (`npx prisma migrate dev`), rodar `npm run db:migrate`
+     apontando para o Turso antes/depois do deploy.
 4. ⏳ Deploy: variáveis `DATABASE_URL` e `DATABASE_AUTH_TOKEN` na Vercel, teste em produção.
 - 💤 **Pagamento real** — deliberadamente adiado. Quando for implementar: **Mercado Pago**
   (recomendado por causa do Pix e confiança do consumidor BR) ou Stripe, via checkout
