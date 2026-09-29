@@ -1,8 +1,8 @@
 import type { MetadataRoute } from "next";
 
 import { getFleet } from "@/lib/data/fleet";
+import { siteUrl } from "@/lib/site";
 
-const siteUrl = "https://www.drivenow.com.br";
 
 export default function sitemap(): MetadataRoute.Sitemap {
   const vehicleRoutes: MetadataRoute.Sitemap = getFleet().map((vehicle) => ({

@@ -1,12 +1,13 @@
 import Link from "next/link";
 import { ChevronRight } from "lucide-react";
 
+import { siteUrl } from "@/lib/site";
+
 export type BreadcrumbItem = {
   label: string;
   href?: string;
 };
 
-const siteUrl = "https://www.drivenow.com.br";
 
 export function Breadcrumbs({ items }: { items: BreadcrumbItem[] }) {
   const jsonLd = {

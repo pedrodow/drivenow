@@ -7,6 +7,7 @@ import { zodResolver } from "@hookform/resolvers/zod";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
+import { DemoNotice } from "@/components/shared/demo-notice";
 import { registerAction } from "@/lib/actions/auth";
 import { registerSchema, type RegisterFormValues } from "@/lib/validation/auth-schema";
 
@@ -76,6 +77,11 @@ export function RegisterForm() {
           <p className="text-label-sm text-destructive">{errors.confirmPassword.message}</p>
         )}
       </div>
+
+      <DemoNotice>
+        Site de demonstração. Use uma senha que você <strong className="text-ink">não usa em outros
+        sites</strong>; seu e-mail e nome ficam salvos no banco do projeto.
+      </DemoNotice>
 
       {serverError && (
         <p role="alert" className="text-label-md text-destructive">

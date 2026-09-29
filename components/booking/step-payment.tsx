@@ -7,6 +7,7 @@ import { Lock } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
+import { DemoNotice } from "@/components/shared/demo-notice";
 import { paymentSchema, type PaymentFormValues } from "@/lib/validation/booking-schema";
 
 type StepPaymentProps = {
@@ -63,6 +64,12 @@ export function StepPayment({ defaultValues, onSubmit, onBack }: StepPaymentProp
           <Lock className="h-4 w-4 text-gold-500" aria-hidden="true" />
           Pagamento
         </h2>
+        <DemoNotice className="mt-4">
+          <strong className="text-ink">Demonstração:</strong> nenhum pagamento é processado e estes
+          dados não são enviados nem guardados. <strong className="text-ink">Não digite dados
+          reais</strong> — para testar, use o cartão fictício <span className="text-ink">4111 1111
+          1111 1111</span>, qualquer validade futura e qualquer CVV.
+        </DemoNotice>
         <div className="mt-4 grid grid-cols-1 gap-5 sm:grid-cols-2">
           <div className="flex flex-col gap-2 sm:col-span-2">
             <Label htmlFor="cardName">Nome impresso no cartão</Label>

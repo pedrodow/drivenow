@@ -56,9 +56,13 @@ export function Footer() {
           </div>
         </div>
 
-        <p className="text-label-sm uppercase tracking-[0.2em] text-ink-faint">
-          © {new Date().getFullYear()} DriveNow Locadora de Veículos. Todos os direitos reservados.
-        </p>
+        <div className="flex flex-col gap-2 text-label-sm text-ink-faint">
+          <p>
+            Projeto de estudo e portfólio: a DriveNow é uma locadora fictícia. Nenhuma reserva ou
+            pagamento é real, e as imagens dos veículos foram geradas por IA.
+          </p>
+          <p className="uppercase tracking-[0.2em]">© {new Date().getFullYear()} DriveNow</p>
+        </div>
       </div>
     </footer>
   );

@@ -29,7 +29,8 @@ export function Confirmation({ vehicle, details, total, reference }: Confirmatio
       </span>
       <h2 className="mt-6 text-headline-xl text-ink">Reserva confirmada!</h2>
       <p className="mt-3 text-body-md text-ink-muted">
-        Enviamos os detalhes para o seu e-mail. Apresente o código abaixo na retirada do veículo.
+        Este é um projeto de demonstração: a reserva não foi salva e nenhum e-mail foi enviado.
+        Em uma locadora real, você apresentaria o código abaixo na retirada do veículo.
       </p>
 
       <div className="glass golden-glow mt-8 w-full rounded-lg p-6 text-left">
