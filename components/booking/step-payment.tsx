@@ -12,11 +12,12 @@ import { paymentSchema, type PaymentFormValues } from "@/lib/validation/booking-
 
 type StepPaymentProps = {
   defaultValues: PaymentFormValues;
-  onSubmit: (values: PaymentFormValues) => void;
+  error?: string;
+  onSubmit: (values: PaymentFormValues) => void | Promise<void>;
   onBack: () => void;
 };
 
-export function StepPayment({ defaultValues, onSubmit, onBack }: StepPaymentProps) {
+export function StepPayment({ defaultValues, error, onSubmit, onBack }: StepPaymentProps) {
   const {
     register,
     handleSubmit,
@@ -116,6 +117,12 @@ export function StepPayment({ defaultValues, onSubmit, onBack }: StepPaymentProp
           </div>
         </div>
       </div>
+
+      {error && (
+        <p role="alert" className="text-label-md text-destructive">
+          {error}
+        </p>
+      )}
 
       <div className="flex gap-3">
         <Button type="button" variant="outline" size="lg" onClick={onBack}>

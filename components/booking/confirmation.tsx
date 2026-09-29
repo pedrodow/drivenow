@@ -29,8 +29,9 @@ export function Confirmation({ vehicle, details, total, reference }: Confirmatio
       </span>
       <h2 className="mt-6 text-headline-xl text-ink">Reserva confirmada!</h2>
       <p className="mt-3 text-body-md text-ink-muted">
-        Este é um projeto de demonstração: a reserva não foi salva e nenhum e-mail foi enviado.
-        Em uma locadora real, você apresentaria o código abaixo na retirada do veículo.
+        Sua reserva foi salva na sua conta. Por ser um projeto de demonstração, nenhum e-mail foi
+        enviado e nenhum pagamento foi cobrado. Em uma locadora real, você apresentaria o código
+        abaixo na retirada do veículo.
       </p>
 
       <div className="glass golden-glow mt-8 w-full rounded-lg p-6 text-left">
@@ -61,7 +62,7 @@ export function Confirmation({ vehicle, details, total, reference }: Confirmatio
             </dd>
           </div>
           <div className="flex justify-between border-t border-white/10 pt-3">
-            <dt className="text-label-md uppercase tracking-wider text-ink-faint">Total pago</dt>
+            <dt className="text-label-md uppercase tracking-wider text-ink-faint">Total</dt>
             <dd className="text-headline-lg text-ink">{formatPrice(total)}</dd>
           </div>
         </dl>
@@ -71,8 +72,8 @@ export function Confirmation({ vehicle, details, total, reference }: Confirmatio
         <Button size="lg" variant="outline" render={<Link href="/frota" />} nativeButton={false}>
           Ver outros veículos
         </Button>
-        <Button size="lg" render={<Link href="/" />} nativeButton={false}>
-          Voltar ao início
+        <Button size="lg" render={<Link href="/minha-drivenow" />} nativeButton={false}>
+          Ver minhas reservas
         </Button>
       </div>
     </div>

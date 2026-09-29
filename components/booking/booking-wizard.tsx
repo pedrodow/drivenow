@@ -9,7 +9,7 @@ import { StepDetails } from "@/components/booking/step-details";
 import { StepExtras } from "@/components/booking/step-extras";
 import { StepPayment } from "@/components/booking/step-payment";
 import { Confirmation } from "@/components/booking/confirmation";
-import { calculateBookingTotal } from "@/lib/data/booking";
+import { createReservationAction } from "@/lib/actions/reservations";
 import { diffInDays } from "@/lib/format";
 import type { Vehicle } from "@/lib/types";
 import type {
@@ -21,20 +21,10 @@ import type {
 type BookingWizardProps = {
   vehicle: Vehicle;
   initialDetails: Partial<DetailsFormValues>;
+  user: { name: string; email: string };
 };
 
-const EMPTY_PAYMENT: PaymentFormValues = {
-  fullName: "",
-  cpf: "",
-  email: "",
-  phone: "",
-  cardName: "",
-  cardNumber: "",
-  cardExpiry: "",
-  cardCvv: "",
-};
-
-export function BookingWizard({ vehicle, initialDetails }: BookingWizardProps) {
+export function BookingWizard({ vehicle, initialDetails, user }: BookingWizardProps) {
   const router = useRouter();
   const pathname = usePathname();
   const searchParams = useSearchParams();
@@ -48,6 +38,19 @@ export function BookingWizard({ vehicle, initialDetails }: BookingWizardProps) {
   });
   const [extras, setExtras] = useState<ExtrasFormValues>({ protectionPlan: "standard", extras: [] });
   const [confirmation, setConfirmation] = useState<{ total: number; reference: string } | null>(null);
+  const [submitError, setSubmitError] = useState<string>();
+
+  // Pré-preenche com a conta logada; o resto o cliente digita.
+  const paymentDefaults: PaymentFormValues = {
+    fullName: user.name,
+    cpf: "",
+    email: user.email,
+    phone: "",
+    cardName: "",
+    cardNumber: "",
+    cardExpiry: "",
+    cardCvv: "",
+  };
 
   const days =
     details.pickupDate && details.returnDate
@@ -60,18 +63,25 @@ export function BookingWizard({ vehicle, initialDetails }: BookingWizardProps) {
     router.push(`${pathname}?${params.toString()}`);
   }
 
-  function handlePaymentSubmit(payment: PaymentFormValues) {
-    // Protótipo sem backend: os dados de pagamento nunca são enviados ou
-    // armazenados, apenas usados para validar o formulário e avançar a etapa.
+  async function handlePaymentSubmit(payment: PaymentFormValues) {
+    // Os dados de pagamento (checkout de demonstração) só validam o formulário
+    // aqui no navegador: NUNCA são enviados ao servidor. Só datas, locais e
+    // extras vão para a action, que recalcula o total por conta própria.
     void payment;
-    const total = calculateBookingTotal({
-      pricePerDay: vehicle.pricePerDay,
-      days,
-      protectionPlanId: extras.protectionPlan,
-      extraIds: extras.extras,
+    setSubmitError(undefined);
+
+    const result = await createReservationAction({
+      vehicleSlug: vehicle.slug,
+      details,
+      extras,
     });
-    const reference = `DN-${Date.now().toString(36).toUpperCase().slice(-6)}`;
-    setConfirmation({ total, reference });
+
+    if ("error" in result) {
+      setSubmitError(result.error);
+      return;
+    }
+
+    setConfirmation(result);
     goToStep(4);
   }
 
@@ -118,7 +128,8 @@ export function BookingWizard({ vehicle, initialDetails }: BookingWizardProps) {
           )}
           {activeStep === 3 && (
             <StepPayment
-              defaultValues={EMPTY_PAYMENT}
+              defaultValues={paymentDefaults}
+              error={submitError}
               onSubmit={handlePaymentSubmit}
               onBack={() => goToStep(2)}
             />

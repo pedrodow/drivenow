@@ -17,6 +17,31 @@ model User {
   passwordHash String
   createdAt    DateTime  @default(now())
   sessions     Session[]
+  reservations Reservation[]
+}
+
+// Só guardamos o que a reserva precisa. Dados de pagamento NUNCA chegam ao
+// servidor (o checkout é demonstração). Datas são "YYYY-MM-DD" em texto para
+// não sofrerem com fuso horário; `total` é recalculado no servidor.
+model Reservation {
+  id             String   @id @default(cuid())
+  reference      String   @unique
+  userId         String
+  user           User     @relation(fields: [userId], references: [id], onDelete: Cascade)
+  vehicleSlug    String
+  vehicleName    String
+  pickupLocation String
+  returnLocation String
+  pickupDate     String
+  returnDate     String
+  days           Int
+  protectionPlan String
+  extras         String   @default("[]") // JSON: ids dos extras escolhidos
+  total          Int
+  status         String   @default("confirmed") // confirmed | cancelled
+  createdAt      DateTime @default(now())
+
+  @@index([userId])
 }
 
 // O id da sessão É o token da sessão (gerado com crypto.randomBytes em
