@@ -10,14 +10,16 @@ situar rápido.
 **Estado:** o site já foi publicado na Vercel e funciona. Nesta sessão foram feitos, em ordem:
 avisos de demonstração e URL configurável, reservas salvas no banco, limite de tentativas de
 login, recuperação de senha por e-mail e Central de Ajuda (+ Privacidade e Termos). Tudo isso
-está commitado, mas **4 commits ainda não foram enviados ao GitHub** (`da15d49` até `c17bd0f`):
+está commitado, mas **5 commits ainda não foram enviados ao GitHub** (de `da15d49` até o commit
+destas notas, e o que vier depois):
 confira com `git status -sb` / `git log origin/master..HEAD`. Enquanto não houver push, o site
 publicado NÃO tem essas funcionalidades.
 
 **Banco:** uma única base Turso é usada tanto pelo `.env` local quanto pela Vercel. As migrations
 foram aplicadas nela até `20260929200000_add_password_reset` (as tabelas já existem, então o
 push é seguro). Sugestão: criar um segundo banco Turso só para testes e deixar o de produção só
-para a Vercel.
+para a Vercel. O banco já contém **1 conta real do dono do projeto**: não apague os dados por
+engano ao limpar testes (use contas de teste separadas e apague só elas).
 
 ### Próximos passos (em ordem)
 
@@ -81,7 +83,8 @@ está aprendendo.
     e até 1 dia antes da retirada (mesma regra do FAQ).
   - ✅ Limite de tentativas (`lib/auth/rate-limit.ts`, guardado no banco porque serverless não
     tem memória compartilhada): login 5/e-mail e 20/IP em 15 min; cadastro 5/IP/h;
-    recuperação 3/e-mail/h e 10/IP/h.
+    recuperação 3/e-mail/h e 10/IP/h. Efeito conhecido: alguém pode travar o login de outra
+    pessoa por 15 min errando a senha de propósito (troca comum nesse tipo de limite).
   - ✅ Recuperação de senha: token de 256 bits guardado só como hash sha256, 1h, uso único; o
     link novo invalida os anteriores; redefinir derruba as sessões. E-mail via Resend
     (`lib/email.ts`, sem SDK); sem `RESEND_API_KEY` o link é impresso no terminal em dev.
