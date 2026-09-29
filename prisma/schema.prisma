@@ -53,3 +53,14 @@ model Session {
   expiresAt DateTime
   createdAt DateTime @default(now())
 }
+
+// Contador genérico para limitar tentativas (login, cadastro, recuperação de
+// senha). Fica no banco porque na Vercel cada execução é isolada: não existe
+// memória compartilhada entre requisições. `key` = "<ação>:<email|ip>:<valor>".
+model RateLimitEvent {
+  id        String   @id @default(cuid())
+  key       String
+  createdAt DateTime @default(now())
+
+  @@index([key, createdAt])
+}
