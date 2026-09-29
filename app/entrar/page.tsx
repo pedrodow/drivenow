@@ -15,9 +15,9 @@ export const metadata: Metadata = {
 export default async function EntrarPage({
   searchParams,
 }: {
-  searchParams: Promise<{ redirectTo?: string }>;
+  searchParams: Promise<{ redirectTo?: string; redefinida?: string }>;
 }) {
-  const { redirectTo } = await searchParams;
+  const { redirectTo, redefinida } = await searchParams;
   const destination = safeRedirectPath(redirectTo);
 
   // Quem já está logado não precisa ver o formulário.
@@ -38,6 +38,14 @@ export default async function EntrarPage({
         </>
       }
     >
+      {redefinida === "1" && (
+        <p
+          role="status"
+          className="mb-5 rounded-lg border border-gold-500/30 bg-gold-500/5 p-4 text-body-md text-ink"
+        >
+          Senha redefinida com sucesso. Entre com a nova senha.
+        </p>
+      )}
       <LoginForm redirectTo={destination} />
     </AuthShell>
   );

@@ -18,6 +18,7 @@ model User {
   createdAt    DateTime  @default(now())
   sessions     Session[]
   reservations Reservation[]
+  resetTokens  PasswordResetToken[]
 }
 
 // Só guardamos o que a reserva precisa. Dados de pagamento NUNCA chegam ao
@@ -63,4 +64,17 @@ model RateLimitEvent {
   createdAt DateTime @default(now())
 
   @@index([key, createdAt])
+}
+
+// Link de "esqueci minha senha". Guardamos só o HASH (sha256) do token: se o banco
+// vazar, ninguém consegue usar os links. O token em si só existe no e-mail.
+model PasswordResetToken {
+  id        String   @id @default(cuid())
+  tokenHash String   @unique
+  userId    String
+  user      User     @relation(fields: [userId], references: [id], onDelete: Cascade)
+  expiresAt DateTime
+  createdAt DateTime @default(now())
+
+  @@index([userId])
 }

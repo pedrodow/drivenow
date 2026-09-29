@@ -1,6 +1,7 @@
 "use client";
 
 import { useState } from "react";
+import Link from "next/link";
 import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 
@@ -51,6 +52,12 @@ export function LoginForm({ redirectTo }: { redirectTo?: string }) {
         {errors.password && (
           <p className="text-label-sm text-destructive">{errors.password.message}</p>
         )}
+        <Link
+          href="/esqueci-senha"
+          className="self-end text-label-md text-gold-500 underline-offset-4 hover:underline"
+        >
+          Esqueci minha senha
+        </Link>
       </div>
 
       {serverError && (
