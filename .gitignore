@@ -32,6 +32,15 @@ yarn-error.log*
 
 # env files (can opt-in for committing if needed)
 .env*
+!.env.example
+
+# cópias das skills para outras ferramentas e config local do Claude Code
+/.agents/
+/.windsurf/
+/.claude/settings.local.json
+
+# prisma (banco local de dev)
+/prisma/dev.db*
 
 # vercel
 .vercel
@@ -39,3 +48,5 @@ yarn-error.log*
 # typescript
 *.tsbuildinfo
 next-env.d.ts
+
+/lib/generated/prisma

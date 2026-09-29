@@ -20,9 +20,24 @@ para que qualquer sessão nova (em qualquer computador) consiga se situar rápid
   exceção proposital é o SEO de `/reservar/[slug]`, que é `noindex` de propósito por
   ser uma página de checkout). 404 e erro personalizados, skeletons de loading,
   breadcrumbs compartilhados com JSON-LD.
-- ⏳ **Fase 5 (futuro, fora de escopo)** — área do cliente logado ("Minha DriveNow") e
-  Central de Ajuda, baseadas em `referencias/.../my_drivenow_dashboard*` e
-  `about_drivenow_help_center*`.
+- 🚧 **Fase 5 (em andamento)** — banco de dados + login, para chegar na área do cliente
+  logado ("Minha DriveNow", baseada em `referencias/.../my_drivenow_dashboard*`).
+  - ✅ Prisma 7 + SQLite (via adapter libsql), models `User` e `Session`, migration `init`.
+  - ✅ Backend de auth: `lib/actions/auth.ts` (cadastro/login/logout), sessão por cookie
+    httpOnly em `lib/auth/session.ts`, `proxy.ts` protegendo `/minha-drivenow/*`.
+  - ⏳ Faltam as telas `/entrar`, `/cadastro` e `/minha-drivenow` (hoje o proxy
+    redireciona para `/entrar`, que ainda dá 404).
+  - ⏳ Central de Ajuda (`about_drivenow_help_center*`) segue como futuro.
+
+## Plano para o deploy na Vercel
+
+1. ✅ Correções: `postinstall: prisma generate` (o client gerado não é versionado),
+   `dotenv` declarado, `.env.example`, `.gitignore` das cópias de skills.
+2. ⏳ Telas de login/cadastro e área logada mínima.
+3. ⏳ Banco remoto: **Turso** (SQLite hospedado). SQLite em arquivo não funciona na
+   Vercel (disco somente leitura/efêmero). Falta: `authToken` em `lib/db.ts` e aplicar
+   o SQL de `prisma/migrations/` no Turso (o `prisma migrate` não fala com libsql).
+4. ⏳ Deploy: variáveis `DATABASE_URL` e `DATABASE_AUTH_TOKEN` na Vercel, teste em produção.
 - 💤 **Pagamento real** — deliberadamente adiado. Quando for implementar: **Mercado Pago**
   (recomendado por causa do Pix e confiança do consumidor BR) ou Stripe, via checkout
   hospedado/componentes embutidos deles — o formulário de cartão atual precisa ser
@@ -38,7 +53,13 @@ para que qualquer sessão nova (em qualquer computador) consiga se situar rápid
   (`@base-ui/react`), não Radix. Componentes ficam em `components/ui/`.
 - **lucide-react** para ícones (essa versão instalada não tem ícones de marca tipo
   Instagram/Facebook — foram removidos do pacote).
-- **react-hook-form + zod v4** para os formulários da reserva.
+- **react-hook-form + zod v4** para os formulários da reserva e de auth.
+- **Prisma 7** (`prisma-client` generator, client gerado em `lib/generated/prisma`, que
+  é ignorado pelo git e recriado no `postinstall`). Prisma 7 exige driver adapter
+  (`@prisma/adapter-libsql`) e a URL do banco vive em `prisma.config.ts`, não no schema.
+  Variáveis em `.env` (modelo em `.env.example`).
+- Auth própria (bcryptjs + sessão no banco), sem NextAuth.
+- No Next 16, `middleware.ts` virou **`proxy.ts`**.
 - Dados (frota, depoimentos, FAQ, extras/proteção) em `lib/data/*.ts`, sempre expostos
   via funções (`getFleet()`, `getVehicleBySlug()` etc.) para facilitar trocar por uma
   API/CMS no futuro sem mexer nos componentes.
@@ -54,7 +75,9 @@ não há foto licenciada para elas).
 ## Como rodar
 
 ```bash
-npm install
+npm install      # também roda `prisma generate` (postinstall)
+cp .env.example .env
+npx prisma migrate deploy   # cria prisma/dev.db com as tabelas
 npm run dev      # http://localhost:3000
 npm run build    # build de produção + checagem de tipos/lint
 npm run lint
