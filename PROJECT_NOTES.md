@@ -20,30 +20,50 @@ para que qualquer sessão nova (em qualquer computador) consiga se situar rápid
   exceção proposital é o SEO de `/reservar/[slug]`, que é `noindex` de propósito por
   ser uma página de checkout). 404 e erro personalizados, skeletons de loading,
   breadcrumbs compartilhados com JSON-LD.
-- 🚧 **Fase 5 (em andamento)** — banco de dados + login, para chegar na área do cliente
+- ✅ **Fase 5 (concluída em 2026-09-29, exceto fotos)** — banco de dados + login, para chegar na área do cliente
   logado ("Minha DriveNow", baseada em `referencias/.../my_drivenow_dashboard*`).
   - ✅ Prisma 7 + SQLite (via adapter libsql), models `User` e `Session`, migration `init`.
   - ✅ Backend de auth: `lib/actions/auth.ts` (cadastro/login/logout), sessão por cookie
     httpOnly em `lib/auth/session.ts`, `proxy.ts` protegendo `/minha-drivenow/*`.
   - ✅ Telas `/entrar`, `/cadastro` e `/minha-drivenow` (mínima: nome, e-mail, sair).
     `redirectTo` é validado em `lib/auth/redirect.ts` (evita open redirect).
+  - ✅ Reservas no banco (`Reservation`): `lib/actions/reservations.ts` exige login, recalcula o
+    total no servidor (nunca confia no navegador) e dados de cartão nunca saem do navegador.
+    Cancelamento só do dono e até 1 dia antes da retirada (mesma regra do FAQ).
+  - ✅ Limite de tentativas (`RateLimitEvent`, `lib/auth/rate-limit.ts`): login 5/e-mail e 20/IP
+    em 15 min; cadastro 5/IP/h; recuperação 3/e-mail/h e 10/IP/h. Fica no banco (serverless).
+  - ✅ Recuperação de senha (`PasswordResetToken`): token guardado como hash sha256, 1h, uso único;
+    e-mail via Resend (`lib/email.ts`, sem SDK). Sem `RESEND_API_KEY` o link vai para o terminal
+    em dev. Sem domínio próprio o Resend só entrega ao dono da conta.
+  - ✅ Central de Ajuda (`/ajuda`, dados em `lib/data/help.ts`), `/privacidade` e `/termos`.
+  - ✅ Avisos de "demonstração" (checkout, cadastro, rodapé); URL do site em `lib/site.ts`.
+  - ⏳ Fotos de Kwid/Mobi/Onix (usuário vai fornecer e colocar em `public/images/fleet/`).
   - ⏳ Testes manuais: ver `CHECKLIST_TESTES.md`.
-  - ⏳ Central de Ajuda (`about_drivenow_help_center*`) segue como futuro.
 
 ## Plano para o deploy na Vercel
 
 1. ✅ Correções: `postinstall: prisma generate` (o client gerado não é versionado),
    `dotenv` declarado, `.env.example`, `.gitignore` das cópias de skills.
 2. ✅ Telas de login/cadastro e área logada mínima.
-3. 🚧 Banco remoto: **Turso** (SQLite hospedado). SQLite em arquivo não funciona na
+3. ✅ Banco remoto: **Turso** (SQLite hospedado). SQLite em arquivo não funciona na
    Vercel (disco somente leitura/efêmero).
    - ✅ `lib/db.ts` aceita `DATABASE_AUTH_TOKEN`; `npm run db:migrate`
      (`scripts/apply-migrations.mjs`) aplica o SQL de `prisma/migrations/` em qualquer
      banco libsql, de forma idempotente (o `prisma migrate` não fala com libsql).
-   - ⏳ Criar o banco no Turso (site), colocar URL + token no `.env` e rodar `npm run db:migrate`.
+   - ✅ Banco criado no Turso e migrations aplicadas (`npm run db:migrate`).
    - Sempre que criar uma migration nova (`npx prisma migrate dev`), rodar `npm run db:migrate`
      apontando para o Turso antes/depois do deploy.
-4. ⏳ Deploy: variáveis `DATABASE_URL` e `DATABASE_AUTH_TOKEN` na Vercel, teste em produção.
+4. 🚧 Deploy na Vercel feito. Variáveis: `DATABASE_URL`, `DATABASE_AUTH_TOKEN` e (novas)
+   `RESEND_API_KEY` / `RESEND_FROM`. Migrations novas devem ser aplicadas no Turso **antes** de
+   publicar o código que as usa. Falta: testar em produção e colocar o link da demo no README.
+
+## Gotchas de ambiente (Windows)
+
+- O `schema-engine` do Prisma pode ser bloqueado por política do Windows (`prisma migrate dev`
+  falha com `spawn UNKNOWN`). Nesse caso, escreva o SQL da migration à mão em
+  `prisma/migrations/<timestamp>_nome/migration.sql`, rode `npx prisma generate` e
+  `npm run db:migrate`; depois confirme no seu terminal com `npx prisma migrate dev`.
+- Parar o `npm run dev` pode deixar o processo `node` na porta 3000; confira antes de reiniciar.
 - 💤 **Pagamento real** — deliberadamente adiado. Quando for implementar: **Mercado Pago**
   (recomendado por causa do Pix e confiança do consumidor BR) ou Stripe, via checkout
   hospedado/componentes embutidos deles — o formulário de cartão atual precisa ser

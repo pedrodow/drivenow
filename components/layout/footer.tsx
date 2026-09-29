@@ -3,10 +3,10 @@ import { AtSign, Camera, MessageCircle } from "lucide-react";
 
 const FOOTER_LINKS = [
   { href: "/frota", label: "Frota" },
-  { href: "/#faq", label: "Perguntas frequentes" },
-  { href: "#", label: "Privacidade" },
-  { href: "#", label: "Termos de uso" },
-  { href: "#", label: "Contato" },
+  { href: "/ajuda", label: "Central de Ajuda" },
+  { href: "/privacidade", label: "Privacidade" },
+  { href: "/termos", label: "Termos de uso" },
+  { href: "/ajuda#contato", label: "Contato" },
 ];
 
 const SOCIALS = [

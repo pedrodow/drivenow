@@ -38,8 +38,9 @@ que parece um produto real. Por isso o repositório também guarda as
 | **Home** | Hero com busca funcional, categorias, frota em destaque, diferenciais, depoimentos e FAQ |
 | **Frota** (`/frota`) | Listagem com filtros por categoria, câmbio e preço — os filtros ficam na URL e podem ser compartilhados |
 | **Veículo** (`/frota/[slug]`) | Detalhes, especificações e veículos parecidos (páginas geradas estaticamente) |
-| **Reserva** (`/reservar/[slug]`) | Fluxo em 3 etapas (datas → extras/proteção → dados) com validação e resumo de preço em tempo real |
-| **Conta** | Cadastro, login e logout com sessão por cookie; área "Minha DriveNow" protegida |
+| **Reserva** (`/reservar/[slug]`) | Fluxo em 3 etapas (datas → extras/proteção → dados) com validação e resumo de preço em tempo real; exige login e **salva a reserva no banco** (o total é recalculado no servidor) |
+| **Conta** | Cadastro, login e logout com sessão por cookie; recuperação de senha por e-mail; área "Minha DriveNow" com histórico de reservas e cancelamento |
+| **Central de Ajuda** (`/ajuda`) | Perguntas por categoria com busca, sobre a marca e contato; páginas de Privacidade e Termos |
 | **Qualidade** | 404 e erro personalizados, skeletons de carregamento, SEO (metadados, JSON-LD, sitemap), acessibilidade WCAG 2.1 AA |
 
 Na auditoria da Fase 4 (axe-core + Lighthouse), as páginas públicas ficaram com nota 99–100
@@ -64,6 +65,9 @@ em desempenho, acessibilidade, boas práticas e SEO.
   (`/api/session`). Home e frota continuam estáticas.
 - **`redirectTo` validado:** o parâmetro de retorno pós-login só aceita caminhos internos,
   evitando *open redirect*.
+- **Segurança por padrão:** limite de tentativas de login/cadastro/recuperação guardado no banco
+  (serverless não tem memória compartilhada), tokens de redefinição salvos só como hash, link de
+  uso único que derruba as sessões abertas, e respostas idênticas para e-mail existente ou não.
 - **Migrations em banco remoto:** o `prisma migrate` não conversa com libSQL/Turso, então o script
   `npm run db:migrate` aplica o mesmo SQL, de forma idempotente.
 - **Dados atrás de funções** (`getFleet()`, `getVehicleBySlug()`…): trocar o arquivo por API/CMS
@@ -111,11 +115,12 @@ referencias/    Mockups originais (Stitch) e design system usados como base
 - [x] Fluxo de reserva em 3 etapas
 - [x] Acessibilidade, SEO e desempenho
 - [x] Banco de dados, cadastro e login
-- [ ] Deploy na Vercel
-- [ ] Salvar reservas no banco e listá-las em "Minha DriveNow"
+- [x] Deploy na Vercel
+- [x] Reservas salvas no banco, listagem e cancelamento em "Minha DriveNow"
+- [x] Recuperação de senha e limite de tentativas de login
+- [x] Central de Ajuda, Privacidade e Termos
+- [ ] Confirmação de e-mail no cadastro
 - [ ] Pagamento real (Mercado Pago com Pix, ou Stripe)
-- [ ] Recuperação de senha e confirmação de e-mail
-- [ ] Central de Ajuda
 
 ## Sobre o autor
 

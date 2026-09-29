@@ -132,12 +132,14 @@ export async function cancelReservationAction(reservationId: string): Promise<vo
   if (!session) return;
 
   // `userId` no filtro garante que ninguém cancela a reserva de outra pessoa.
+  // Regra publicada no FAQ: cancelamento grátis com pelo menos 1 dia de antecedência
+  // (a retirada precisa ser depois de hoje).
   await prisma.reservation.updateMany({
     where: {
       id: reservationId,
       userId: session.userId,
       status: "confirmed",
-      pickupDate: { gte: todayInBrazil() },
+      pickupDate: { gt: todayInBrazil() },
     },
     data: { status: "cancelled" },
   });

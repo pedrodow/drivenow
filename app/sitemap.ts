@@ -25,6 +25,12 @@ export default function sitemap(): MetadataRoute.Sitemap {
       changeFrequency: "weekly",
       priority: 0.9,
     },
+    ...["/ajuda", "/privacidade", "/termos"].map((path) => ({
+      url: `${siteUrl}${path}`,
+      lastModified: new Date(),
+      changeFrequency: "monthly" as const,
+      priority: 0.5,
+    })),
     ...vehicleRoutes,
   ];
 }

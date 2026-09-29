@@ -19,7 +19,7 @@ const NAV_LINKS = [
   { href: "/frota", label: "Frota" },
   { href: "/#como-funciona", label: "Como funciona" },
   { href: "/#depoimentos", label: "Depoimentos" },
-  { href: "/#faq", label: "FAQ" },
+  { href: "/ajuda", label: "Ajuda" },
 ];
 
 function firstName(fullName: string) {

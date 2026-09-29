@@ -50,7 +50,8 @@ function getStatus(reservation: ReservationView, today: string) {
 export function ReservationCard({ reservation }: { reservation: ReservationView }) {
   const today = todayInBrazil();
   const status = getStatus(reservation, today);
-  const canCancel = reservation.status === "confirmed" && reservation.pickupDate >= today;
+  // Mesma regra da action: cancelamento até 1 dia antes da retirada.
+  const canCancel = reservation.status === "confirmed" && reservation.pickupDate > today;
   const plan = PROTECTION_PLANS.find((item) => item.id === reservation.protectionPlan);
   const extras = parseExtras(reservation.extras);
 
