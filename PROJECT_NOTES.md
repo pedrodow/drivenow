@@ -25,15 +25,16 @@ para que qualquer sessão nova (em qualquer computador) consiga se situar rápid
   - ✅ Prisma 7 + SQLite (via adapter libsql), models `User` e `Session`, migration `init`.
   - ✅ Backend de auth: `lib/actions/auth.ts` (cadastro/login/logout), sessão por cookie
     httpOnly em `lib/auth/session.ts`, `proxy.ts` protegendo `/minha-drivenow/*`.
-  - ⏳ Faltam as telas `/entrar`, `/cadastro` e `/minha-drivenow` (hoje o proxy
-    redireciona para `/entrar`, que ainda dá 404).
+  - ✅ Telas `/entrar`, `/cadastro` e `/minha-drivenow` (mínima: nome, e-mail, sair).
+    `redirectTo` é validado em `lib/auth/redirect.ts` (evita open redirect).
+  - ⏳ Testes manuais: ver `CHECKLIST_TESTES.md`.
   - ⏳ Central de Ajuda (`about_drivenow_help_center*`) segue como futuro.
 
 ## Plano para o deploy na Vercel
 
 1. ✅ Correções: `postinstall: prisma generate` (o client gerado não é versionado),
    `dotenv` declarado, `.env.example`, `.gitignore` das cópias de skills.
-2. ⏳ Telas de login/cadastro e área logada mínima.
+2. ✅ Telas de login/cadastro e área logada mínima.
 3. ⏳ Banco remoto: **Turso** (SQLite hospedado). SQLite em arquivo não funciona na
    Vercel (disco somente leitura/efêmero). Falta: `authToken` em `lib/db.ts` e aplicar
    o SQL de `prisma/migrations/` no Turso (o `prisma migrate` não fala com libsql).
